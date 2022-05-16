@@ -123,6 +123,53 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &597114043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 597114045}
+  - component: {fileID: 597114044}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &597114044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597114043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b369fc7d06448ef49bb87aa9a244b15a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _allItems:
+  - {fileID: 11400000, guid: b5c9f060f5f647c438c326e0a49a7c05, type: 2}
+  - {fileID: 11400000, guid: 96aa00bf5623ef6439d08e858b82b99b, type: 2}
+  _itemPrefab: {fileID: 2653608874978112702, guid: 6a5ca632c184c6f4d979df445ea89541, type: 3}
+--- !u!4 &597114045
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597114043}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,7 +440,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7396ee6eac15cac4db86a38c912561bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainWeapon: {fileID: 11400000, guid: b5c9f060f5f647c438c326e0a49a7c05, type: 2}
+  _inventory: []
+  _mainWeapon: {fileID: 0}
   _equippedTalisman: {fileID: 0}
 --- !u!143 &1275412260
 CharacterController:

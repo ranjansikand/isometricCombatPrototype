@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaca289271413ce409cbea2561d2072d, type: 3}
   m_Name: Quickstep
   m_EditorClassIdentifier: 
+  _itemName: Quickstep Talisman
+  _itemType: 0
   _walkSpeedModifer: 1.5
   _dodgeSpeedModifier: 1.25

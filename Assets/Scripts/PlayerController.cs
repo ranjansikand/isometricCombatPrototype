@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(CharacterController))]
-[RequireComponent(typeof(Animator))]
-public class PlayerController : MonoBehaviour
+[RequireComponent(typeof(CharacterController), typeof(Animator))]
+public class PlayerController : MonoBehaviour, IReceivable
 {
-    #region global variables
+    #region variables
     private PlayerInput _playerInput;
     private CharacterController _characterController;
     private Animator _animator;
@@ -31,12 +30,15 @@ public class PlayerController : MonoBehaviour
     private int _standardRunHash;
     private int _standardDodgeHash;
     private int _standardAttackHash;
+    // inventory
+    private int _inventoryCapacity = 20;
 
     private bool _needToSwitchToIdle = false;
 
     // Scriptable Objects
-    [SerializeField] Weapons _mainWeapon;
-    [SerializeField] Talismans _equippedTalisman;
+    [SerializeField] private List<Item> _inventory = new List<Item>();
+    [SerializeField] private Weapons _mainWeapon;
+    [SerializeField] private Talismans _equippedTalisman;
     #endregion
 
     #region getters and setters
@@ -66,7 +68,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 AppliedMovement { get { return _appliedMovement; } set { _appliedMovement = value; }}
     #endregion
 
-    #region input functions
+    #region input and event callback functions
     private void OnEnable() {
         _playerInput.Enable();
     }
@@ -86,11 +88,36 @@ public class PlayerController : MonoBehaviour
 
     private void OnAttack(InputAction.CallbackContext context) {
         _states.SwitchState(_states.GetState(2));
+
+        // For testing
+        ItemGenerator.instance.SpawnObject (transform.position + new Vector3(5, 1, 5));
     }
 
     public void EndAction() {
         if (_currentMovementInput == Vector2.zero) _states.SwitchState(_states.GetState(3));
         else _states.SwitchState(_states.GetState(0));
+    }
+    #endregion
+
+    #region inventory-specific functions
+    private void PrepareInventory()
+    {
+        _inventoryCapacity = 20 - _inventory.Count;
+    }
+
+    public bool AddItem (Item newItem) 
+    {
+        if (_inventoryCapacity <= 0) {
+            Debug.Log("Inventory full!");
+            return false;
+        }
+        else {
+           _inventory.Add(newItem);
+           _inventoryCapacity -= 1;
+           Debug.Log("Successfully aqcquired "+newItem._itemName+". "+_inventoryCapacity+" spaces remaining.");
+
+            return true; 
+        }
     }
     #endregion
 
@@ -115,6 +142,8 @@ public class PlayerController : MonoBehaviour
         _playerInput.Player.Attack.performed += OnAttack;
 
         ActionState.onAnimationComplete += EndAction;
+
+        PrepareInventory();
     }
 
     void Update()

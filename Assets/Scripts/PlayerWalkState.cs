@@ -23,12 +23,7 @@ public class PlayerWalkState : PlayerBaseState
             Ctx.WalkSpeed;
     }
     public override void UpdateState() {
-        if (Ctx.CurrentMovementInput == Vector2.zero) {
-            Ctx.NeedToSwitchToIdle = true;
-            return;
-        }
-        Ctx.AppliedMovement = new Vector3(Ctx.CurrentMovementInput.x, 0, Ctx.CurrentMovementInput.y) * _walkSpeed;
-        Ctx.CharacterController.Move(Ctx.AppliedMovement * Time.deltaTime);
+        HandleMotion();
 
         HandleRotation();
     }
@@ -36,6 +31,15 @@ public class PlayerWalkState : PlayerBaseState
         Ctx.NeedToSwitchToIdle = false;
     }
     public override void InitializeSubState() {}
+
+    void HandleMotion() {
+        if (Ctx.CurrentMovementInput == Vector2.zero) {
+            Ctx.NeedToSwitchToIdle = true;
+            return;
+        }
+        Ctx.AppliedMovement = new Vector3(Ctx.CurrentMovementInput.x, 0, Ctx.CurrentMovementInput.y) * _walkSpeed;
+        Ctx.CharacterController.Move(Ctx.AppliedMovement * Time.deltaTime);
+    }
 
     void HandleRotation() {
         float targetRotation = Mathf.Atan2(Ctx.CurrentMovementInput.x, Ctx.CurrentMovementInput.y) * Mathf.Rad2Deg;
