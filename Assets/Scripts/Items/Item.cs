@@ -1,11 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+// Base object for Inventory items
 
-public enum ItemType {
-    Weapon, 
-    Talisman
-}
+using UnityEngine;
 
 public abstract class Item : ScriptableObject
 {

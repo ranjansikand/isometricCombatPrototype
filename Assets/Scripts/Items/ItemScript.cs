@@ -1,4 +1,5 @@
-// 
+// Script attached to item prefab
+// Item assigned by Generator
 
 using UnityEngine;
 
@@ -7,17 +8,6 @@ public class ItemScript : MonoBehaviour
 {
     Item item; 
     public Item Item { set { item = value; }}
-
-    SphereCollider _collider;
-
-    void Awake() {
-        _collider = GetComponent<SphereCollider>();
-    }
-
-    void Start() {
-        _collider.isTrigger = true;
-        _collider.radius = 1.0f;
-    }
 
     void Update() {
         transform.Rotate(Time.deltaTime * 35f, Time.deltaTime * 65f, Time.deltaTime * 35f, Space.Self);
