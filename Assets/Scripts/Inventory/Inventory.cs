@@ -25,28 +25,24 @@ public class Inventory : MonoBehaviour
             Debug.LogWarning("Insufficient inventory slots!");
         }
 
-        PrepareInventory(false);
+        PrepareInventory();
     }
 
-    private void PrepareInventory(bool reveal)
+    private void PrepareInventory(bool reveal = false)
     {
         _capacity = _capacity - _inventory.Count;
 
         for (int i = 0; i < Mathf.Min(_inventory.Count, _slots.Count); i++) {
-            AssignSlot(_slots[i], i);
+            if (_slots[i] != null && _inventory[i] != null) {
+                _slots[i].PrepObject(_inventory[i], i, true);
+            }
         }
-
+    
         _panel.SetActive(reveal);
     }
 
-    void AssignSlot(InventorySlot slot, int index) {
-        slot.Item = _inventory[index];
-        slot.Index = index;
-        slot.PrepObject();
-    }
-
-
-    #region called by the Player Controller
+    #region public functions
+    // Called by Player Controller on item pickup
     public bool AddItem (Item newItem) 
     {
         if (_capacity <= 0) {
@@ -56,14 +52,31 @@ public class Inventory : MonoBehaviour
         else {
             _inventory.Add(newItem);
             _capacity -= 1;
-            Debug.Log("Acquired " + newItem._itemName+ ". " + _capacity + " spaces remaining.");
+            Debug.Log("Acquired " + newItem.ItemName+ ". " + _capacity + " spaces remaining.");
 
             return true; 
         }
     }
 
+    // Called by Player Controller via input event
     public void ToggleInventory() {
         PrepareInventory(!_panel.activeSelf);
+    }
+
+    // Called by Inventory Slot via button clicks
+    public void UseItem(int index) {
+        if (_slots[index].Item == _inventory[index]) {
+            itemEquipped(_inventory[index]);
+            _inventory.RemoveAt(index);
+        } else {
+            Debug.LogWarning("Inventory mismatch!");
+            PrepareInventory(_panel.activeSelf);
+        }
+    }
+
+    public void Remove(int index) {
+        _inventory.RemoveAt(index);
+        PrepareInventory();
     }
     #endregion
 }

@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour, IReceivable
 {
     #region variables
+    public static PlayerController instance;
     private PlayerInput _playerInput;
     private CharacterController _characterController;
     private Animator _animator;
@@ -63,6 +64,7 @@ public class PlayerController : MonoBehaviour, IReceivable
 
     public Vector2 CurrentMovementInput { get { return _currentMovementInput; }}
     public Vector3 AppliedMovement { get { return _appliedMovement; } set { _appliedMovement = value; }}
+    public Vector3 CurrentPosition { get { return transform.position; }}
     #endregion
 
     #region input and event callback functions
@@ -120,6 +122,12 @@ public class PlayerController : MonoBehaviour, IReceivable
 
     void Awake()
     {
+        if (instance != null) {
+            Debug.LogWarning("Multiple players found!");
+            return;
+        }
+        instance = this;
+
         _playerInput = new PlayerInput();
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
