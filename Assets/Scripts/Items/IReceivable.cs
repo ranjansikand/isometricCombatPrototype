@@ -3,5 +3,5 @@
 
 public interface IReceivable
 {
-    bool AddItem (Item newItem);
+    void SelectItem (Item newItem = null);
 }

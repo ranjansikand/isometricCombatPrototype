@@ -8,10 +8,12 @@ public class PlayerController : MonoBehaviour, IReceivable
 {
     #region variables
     public static PlayerController instance;
+
     private PlayerInput _playerInput;
     private CharacterController _characterController;
     private Animator _animator;
 
+    // State Machine
     private PlayerBaseState _currentState;
     private PlayerStateFactory _states;
 
@@ -21,7 +23,7 @@ public class PlayerController : MonoBehaviour, IReceivable
     private Vector2 _currentMovementInput;
     private Vector3 _appliedMovement;
 
-    // Attack
+    // Attacking
     private Coroutine _comboResetRoutine = null;
     private int _attackNumber = 1;
     private WaitForSeconds _comboResetTimer = new WaitForSeconds(1.5f);
@@ -32,11 +34,15 @@ public class PlayerController : MonoBehaviour, IReceivable
     private int _standardDodgeHash;
     private int _standardAttackHash;
 
+    // Conditions
     private bool _needToSwitchToIdle = false;
+    private bool _lockedIntoState = false;
 
     // Scriptable Objects
+    [Header("Items only shown in inspector for debugging")]
     [SerializeField] private Weapons _mainWeapon;
     [SerializeField] private Talismans _equippedTalisman;
+    [SerializeField] private Item _selectedItem;
     #endregion
 
     #region getters and setters
@@ -46,6 +52,7 @@ public class PlayerController : MonoBehaviour, IReceivable
 
     public Weapons MainWeapon { get { return _mainWeapon; }}
     public Talismans EquippedTalisman { get { return _equippedTalisman; }}
+    public Item SelectedItem { get { return _selectedItem; }}
 
     public Coroutine ComboResetRoutine { get { return _comboResetRoutine; } set { _comboResetRoutine = value; }}
 
@@ -77,31 +84,48 @@ public class PlayerController : MonoBehaviour, IReceivable
     }
     private void OnMovementInput(InputAction.CallbackContext context) {
         _currentMovementInput = context.ReadValue<Vector2>().normalized;
-
-        if (_currentMovementInput != Vector2.zero) _states.SwitchState(_states.GetState(0));
+        if (!_lockedIntoState && _currentMovementInput != Vector2.zero) {
+            _states.SwitchState(_states.GetState(0));
+        }
     }
 
     private void OnDodge(InputAction.CallbackContext context) {
-        _states.SwitchState(_states.GetState(1));
+        if (!_lockedIntoState) {
+            _states.SwitchState(_states.GetState(1));
+            _lockedIntoState = true;
+        }
     }
 
     private void OnAttack(InputAction.CallbackContext context) {
-        _states.SwitchState(_states.GetState(2));
+        if (!_lockedIntoState) {
+            _states.SwitchState(_states.GetState(2));
+            _lockedIntoState = true;
+        }
 
         // For testing
         ItemGenerator.instance.SpawnObject (transform.position + new Vector3(5, 1, 5));
     }
 
-    private void OnMenu(InputAction.CallbackContext context) {
-        Inventory.instance.ToggleInventory();
-    }
-
     public void EndAction() {
+        _lockedIntoState = false;
+
         if (_currentMovementInput == Vector2.zero) _states.SwitchState(_states.GetState(3));
         else _states.SwitchState(_states.GetState(0));
     }
 
-    public void EquipItem(Item item) {
+    #endregion
+
+    #region Inventory-Based Functions
+
+    public void SelectItem(Item newItem = null) {
+        _selectedItem = newItem;
+    }
+
+    void DiscardSelection(Item item) {
+        _selectedItem = null;
+    }
+
+    void EquipItem(Item item) {
         if (item is Weapons wep) {
             if (_mainWeapon != null) {
                 Inventory.instance.AddItem(_mainWeapon);
@@ -114,11 +138,8 @@ public class PlayerController : MonoBehaviour, IReceivable
             _equippedTalisman = talisman;
         }
     }
-    #endregion
 
-    public bool AddItem(Item newItem) {
-        return Inventory.instance.AddItem(newItem);
-    }
+    #endregion
 
     void Awake()
     {
@@ -145,10 +166,10 @@ public class PlayerController : MonoBehaviour, IReceivable
         _playerInput.Player.Movement.canceled += OnMovementInput;
         _playerInput.Player.Dodge.performed += OnDodge;
         _playerInput.Player.Attack.performed += OnAttack;
-        _playerInput.Player.Menu.performed += OnMenu;
 
         ActionState.onAnimationComplete += EndAction;
-        Inventory.itemEquipped += EquipItem;
+        PickupMenu.itemEquip += EquipItem;
+        PickupMenu.discardSelection += DiscardSelection;
     }
 
     void Update()

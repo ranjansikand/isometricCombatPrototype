@@ -6,18 +6,65 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class ItemScript : MonoBehaviour
 {
-    Item item; 
+    private Item item; 
+
+    private bool _isSelected = false;
+    private bool _menuOpen = false;
+
+    public GameObject _selectedHighlight;
     public Item Item { set { item = value; }}
 
-    void Update() {
-        transform.Rotate(Time.deltaTime * 35f, Time.deltaTime * 65f, Time.deltaTime * 35f, Space.Self);
+    #region helper functions
+    void ToggleSelection (bool status) {
+        _isSelected = status;
+        _selectedHighlight?.SetActive(status);
+    }
+
+    void TriggerActions(Collider given, bool status)
+    {
+        Item temp = status ? item : null;
+        
+        var itemReceiver = given.GetComponent<IReceivable>();
+        
+        if (itemReceiver != null) {
+            itemReceiver?.SelectItem(temp);
+            ToggleSelection(status);
+        }
+    }
+
+    #endregion
+
+    #region event callbacks
+
+    void OnEquip(Item inItem) {
+        if (_menuOpen) Destroy(gameObject);
+    }
+
+    void MenuOpened(Item item) { 
+        _menuOpen = _isSelected;
+    }
+
+    void OnDiscard(Item item) { 
+        _isSelected = _menuOpen = false;
+        ToggleSelection(false);
+    }
+
+    #endregion
+
+    void Awake()
+    {
+        PickupMenu.itemEquip += OnEquip;
+        PickupMenu.menuOpened += MenuOpened;
+        PickupMenu.discardSelection += OnDiscard;
+
+        ToggleSelection(false);
     }
 
     void OnTriggerEnter(Collider collider) {
-        var itemReceiver = collider.GetComponent<IReceivable>();
+        TriggerActions(collider, true);
+    }
 
-        if (itemReceiver != null && itemReceiver.AddItem(item)) {
-            Destroy(gameObject);
-        }
+    void OnTriggerExit(Collider collider) {
+        TriggerActions(collider, _menuOpen);
     }
 }
