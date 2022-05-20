@@ -27,11 +27,12 @@ public class ItemGenerator : MonoBehaviour
     #endregion
 
     // Script called from fallen enemies
-    public void SpawnObject (Vector3 location, Item item = null) {
+    public GameObject SpawnObject (Vector3 location, Item item = null) {
         if (item == null) {
             item = GetRandomItem();
         }
-        GameObject newItem = Instantiate(_itemPrefab, location, Quaternion.identity);
-        newItem.GetComponent<ItemScript>().Item = item;
+        GameObject newItem = Instantiate(_itemPrefab, location + Vector3.up, Quaternion.identity);
+        newItem.GetComponent<Loot>().Item = item;
+        return newItem;
     }
 }

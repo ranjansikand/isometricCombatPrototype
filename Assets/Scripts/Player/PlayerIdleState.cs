@@ -11,12 +11,7 @@ public class PlayerIdleState : PlayerBaseState
     public override void EnterState() {
         Ctx.NeedToSwitchToIdle = false;
         
-
-        if (Ctx.MainWeapon?._idle != null) {
-            Ctx.Animator.Play(Ctx.MainWeapon._idle.name);
-        } else {
-            Ctx.Animator.Play(Ctx.StandardIdleHash);
-        }
+        Ctx.Animator.Play(Ctx.StandardIdleHash);
     }
     public override void UpdateState() {}
     public override void ExitState() {}

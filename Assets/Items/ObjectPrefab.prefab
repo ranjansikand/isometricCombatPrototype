@@ -105,8 +105,8 @@ GameObject:
   - component: {fileID: 2653608874978112693}
   - component: {fileID: 7885292356233395108}
   - component: {fileID: 2653608874978112696}
-  - component: {fileID: 2653608874978112697}
-  m_Layer: 0
+  - component: {fileID: 4940210155473638687}
+  m_Layer: 6
   m_Name: ObjectPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,7 +159,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2653608874978112697
+--- !u!114 &4940210155473638687
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2653608874978112702}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbda801877014bd44bd3c7d2f6b70098, type: 3}
+  m_Script: {fileID: 11500000, guid: 17967c887b162504c8127252e73daae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _selectedHighlight: {fileID: 7194159696122530920}
@@ -5043,7 +5043,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2876877927875957428}
-  - component: {fileID: 3824383854580513781}
+  - component: {fileID: 6008341294268734996}
   m_Layer: 1
   m_Name: Pedestal
   m_TagString: Untagged
@@ -5065,7 +5065,7 @@ Transform:
   m_Father: {fileID: 2653608874978112693}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3824383854580513781
+--- !u!65 &6008341294268734996
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

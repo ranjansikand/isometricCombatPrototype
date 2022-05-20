@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController), typeof(Animator))]
-public class PlayerController : MonoBehaviour, IReceivable
+public class PlayerController : MonoBehaviour
 {
     #region variables
     public static PlayerController instance;
@@ -33,16 +33,18 @@ public class PlayerController : MonoBehaviour, IReceivable
     private int _standardRunHash;
     private int _standardDodgeHash;
     private int _standardAttackHash;
+    private int _attack1, _attack2, _finisher;
 
     // Conditions
     private bool _needToSwitchToIdle = false;
     private bool _lockedIntoState = false;
+    private bool _menuOpen = false;
 
     // Scriptable Objects
     [Header("Items only shown in inspector for debugging")]
+    [SerializeField] private Loot _selection;
     [SerializeField] private Weapons _mainWeapon;
     [SerializeField] private Talismans _equippedTalisman;
-    [SerializeField] private Item _selectedItem;
     #endregion
 
     #region getters and setters
@@ -50,20 +52,24 @@ public class PlayerController : MonoBehaviour, IReceivable
     public Animator Animator { get { return _animator; }}
     public CharacterController CharacterController { get { return _characterController; }}
 
+    public Loot Selection { get { return _selection; }}
     public Weapons MainWeapon { get { return _mainWeapon; }}
     public Talismans EquippedTalisman { get { return _equippedTalisman; }}
-    public Item SelectedItem { get { return _selectedItem; }}
 
     public Coroutine ComboResetRoutine { get { return _comboResetRoutine; } set { _comboResetRoutine = value; }}
 
     public WaitForSeconds ComboResetTimer { get { return _comboResetTimer; }}
 
-    public bool NeedToSwitchToIdle { get { return _needToSwitchToIdle; } set { _needToSwitchToIdle = value; }}
+    public bool NeedToSwitchToIdle { set { _needToSwitchToIdle = value; }}
+    public bool MenuOpen { set { _menuOpen = value; }}
 
     public int StandardIdleHash { get { return _standardIdleHash; }}
     public int StandardRunHash { get { return _standardRunHash; }}
     public int StandardDodgeHash { get { return _standardDodgeHash; }}
     public int StandardAttackHash { get {return _standardAttackHash; }}
+    public int Attack1 { get { return _attack1; }}
+    public int Attack2 { get { return _attack2; }}
+    public int Finisher { get { return _finisher; }}
     public int AttackNumber { get { return _attackNumber; } set { _attackNumber = value; }}
 
     public float WalkSpeed { get { return _walkSpeed; }}
@@ -101,12 +107,9 @@ public class PlayerController : MonoBehaviour, IReceivable
             _states.SwitchState(_states.GetState(2));
             _lockedIntoState = true;
         }
-
-        // For testing
-        ItemGenerator.instance.SpawnObject (transform.position + new Vector3(5, 1, 5));
     }
 
-    public void EndAction() {
+    private void EndAction() {
         _lockedIntoState = false;
 
         if (_currentMovementInput == Vector2.zero) _states.SwitchState(_states.GetState(3));
@@ -116,29 +119,58 @@ public class PlayerController : MonoBehaviour, IReceivable
     #endregion
 
     #region Inventory-Based Functions
-
-    public void SelectItem(Item newItem = null) {
-        _selectedItem = newItem;
+    public void DeselectItem() {
+        _selection?.DeselectObject();
+        _selection = null;
     }
 
-    void DiscardSelection(Item item) {
-        _selectedItem = null;
-    }
+    public void EquipSelection() {
+        Item waste = null;
 
-    void EquipItem(Item item) {
-        if (item is Weapons wep) {
-            if (_mainWeapon != null) {
-                Inventory.instance.AddItem(_mainWeapon);
-            }
+        if (_selection.Item is Weapons wep) {
+            waste = _mainWeapon;
             _mainWeapon = wep;
-        } else if (item is Talismans talisman) {
-            if (_mainWeapon != null) {
-                Inventory.instance.AddItem(_equippedTalisman);
-            }
-            _equippedTalisman = talisman;
+        }
+        else if (_selection.Item is Talismans tal) {
+            waste = _equippedTalisman;
+            _equippedTalisman = tal;
+        }
+
+        if (waste != null) {
+            GameObject buffer = ItemGenerator.instance.SpawnObject(transform.position, waste);
+            buffer.GetComponent<Rigidbody>().AddForce(
+                Random.Range(-3f, 3f), 2f, 
+                Random.Range(-3f, 3f), 
+                ForceMode.Impulse);
+        }
+
+        GenerateAnimationHashes();
+        Destroy(_selection.gameObject);
+    }
+    #endregion
+
+    #region Other functions
+    private void GenerateAnimationHashes() {  // Call on Equip or Unequip
+        _standardIdleHash = _mainWeapon?._idle == null ? 
+            Animator.StringToHash("Idle") : 
+            Animator.StringToHash(_mainWeapon._idle.name);
+        _standardRunHash = _mainWeapon?._run == null ? 
+            Animator.StringToHash("Run") : 
+            Animator.StringToHash(_mainWeapon._run.name);
+        if (_mainWeapon != null) {
+            _attack1 = Animator.StringToHash(_mainWeapon._attack1.name);
+            _attack2 = Animator.StringToHash(_mainWeapon._attack2.name);
+            _finisher = Animator.StringToHash(_mainWeapon._finisher.name);
         }
     }
 
+    public bool CanMoveForward() {
+        return Physics.Raycast(
+            transform.position + Vector3.up, 
+            _appliedMovement,
+            0.5f
+        );
+    }
     #endregion
 
     void Awake()
@@ -157,10 +189,9 @@ public class PlayerController : MonoBehaviour, IReceivable
         _states.GenerateStates();
         _states.SwitchState(_states.GetState(0));
 
-        _standardIdleHash = Animator.StringToHash("Idle");
-        _standardRunHash = Animator.StringToHash("Run");
         _standardDodgeHash = Animator.StringToHash("Dodge");
         _standardAttackHash = Animator.StringToHash("Hit");
+        GenerateAnimationHashes();
 
         _playerInput.Player.Movement.performed += OnMovementInput;
         _playerInput.Player.Movement.canceled += OnMovementInput;
@@ -168,8 +199,6 @@ public class PlayerController : MonoBehaviour, IReceivable
         _playerInput.Player.Attack.performed += OnAttack;
 
         ActionState.onAnimationComplete += EndAction;
-        PickupMenu.itemEquip += EquipItem;
-        PickupMenu.discardSelection += DiscardSelection;
     }
 
     void Update()
@@ -178,6 +207,19 @@ public class PlayerController : MonoBehaviour, IReceivable
 
         if (_needToSwitchToIdle) {
             _states.SwitchState(_states.GetState(3));
+        }
+    }
+
+    void OnTriggerEnter(Collider other) {
+        if (_selection == null && !_menuOpen && other.gameObject.layer == 6) {
+            _selection = other.GetComponent<Loot>();
+            _selection?.SelectObject();
+        }
+    }
+
+    void OnTriggerExit(Collider other) {
+        if (!_menuOpen && _selection != null && _selection == other.GetComponent<Loot>()) {
+            DeselectItem();
         }
     }
 }

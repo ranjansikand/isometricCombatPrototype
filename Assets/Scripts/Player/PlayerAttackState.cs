@@ -19,17 +19,17 @@ public class PlayerAttackState : PlayerBaseState
             switch (Ctx.AttackNumber) {
                 case (1): 
                     Debug.Log("Attack 1");
-                    Ctx.Animator.Play(Ctx.MainWeapon._attack1.name);
+                    Ctx.Animator.Play(Ctx.Attack1);
                     Ctx.AttackNumber++;
                     break;
                 case (2):
                     Debug.Log("Attack 2");
-                    Ctx.Animator.Play(Ctx.MainWeapon._attack2.name);
+                    Ctx.Animator.Play(Ctx.Attack2);
                     Ctx.AttackNumber++;
                     break;
                 case (3): 
                     Debug.Log("Finisher");
-                    Ctx.Animator.Play(Ctx.MainWeapon._finisher.name);
+                    Ctx.Animator.Play(Ctx.Finisher);
                     Ctx.AttackNumber = 1;
                     break;
                 default: 

@@ -24,7 +24,9 @@ public class PlayerDodgeState : PlayerBaseState
     }
     public override void UpdateState() {
         Ctx.AppliedMovement = _direction * _dodgeSpeed;
-        Ctx.CharacterController.Move(Ctx.AppliedMovement * Time.deltaTime);
+        if (Ctx.CanMoveForward()) {
+            Ctx.CharacterController.Move(Ctx.AppliedMovement * Time.deltaTime);
+        } 
     }
     public override void ExitState() {}
     public override void InitializeSubState() {}

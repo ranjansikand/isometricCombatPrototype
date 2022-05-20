@@ -10,12 +10,7 @@ public class PlayerWalkState : PlayerBaseState
         InitializeSubState();
     }
     public override void EnterState() {
-        // Check if current weapon overrides run animation
-        if (Ctx.MainWeapon?._run != null) {
-            Ctx.Animator.Play(Ctx.MainWeapon._run.name);
-        } else {
-            Ctx.Animator.Play(Ctx.StandardRunHash);
-        }
+        Ctx.Animator.Play(Ctx.StandardRunHash);
 
         // Set walk speed dependent on equipped talisman
         _walkSpeed = Ctx.EquippedTalisman != null ? 
@@ -23,9 +18,8 @@ public class PlayerWalkState : PlayerBaseState
             Ctx.WalkSpeed;
     }
     public override void UpdateState() {
-        HandleMotion();
-
-        HandleRotation();
+            HandleMotion();
+            HandleRotation();
     }
     public override void ExitState() {
         Ctx.NeedToSwitchToIdle = false;
@@ -38,7 +32,10 @@ public class PlayerWalkState : PlayerBaseState
             return;
         }
         Ctx.AppliedMovement = new Vector3(Ctx.CurrentMovementInput.x, 0, Ctx.CurrentMovementInput.y) * _walkSpeed;
-        Ctx.CharacterController.Move(Ctx.AppliedMovement * Time.deltaTime);
+        
+        if (Ctx.CanMoveForward()) {
+            Ctx.CharacterController.Move(Ctx.AppliedMovement * Time.deltaTime);
+        }
     }
 
     void HandleRotation() {
