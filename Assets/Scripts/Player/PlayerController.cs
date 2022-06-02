@@ -18,8 +18,8 @@ public class PlayerController : MonoBehaviour
     private PlayerStateFactory _states;
 
     // Movement
-    private float _walkSpeed = 2.5f;
-    private float _dodgeSpeed = 2.5f;
+    private float _walkSpeed = 4.5f;
+    private float _dodgeSpeed = 1.5f;
     private Vector2 _currentMovementInput;
     private Vector3 _appliedMovement;
 
@@ -38,13 +38,17 @@ public class PlayerController : MonoBehaviour
     // Conditions
     private bool _needToSwitchToIdle = false;
     private bool _lockedIntoState = false;
+    private bool _attacking = false;
     private bool _menuOpen = false;
 
     // Scriptable Objects
-    [Header("Items only shown in inspector for debugging")]
-    [SerializeField] private Loot _selection;
-    [SerializeField] private Weapons _mainWeapon;
-    [SerializeField] private Talismans _equippedTalisman;
+    private Loot _selection;
+    private Weapons _mainWeapon;
+    private Talismans _equippedTalisman;
+
+    private GameObject _equippedWeapon = null;  // weapon currently in use
+    [SerializeField] private Transform _hand;  // weapon spawnpoint
+    [SerializeField] private LayerMask layerMask;  // layer for ray
     #endregion
 
     #region getters and setters
@@ -62,6 +66,7 @@ public class PlayerController : MonoBehaviour
 
     public bool NeedToSwitchToIdle { set { _needToSwitchToIdle = value; }}
     public bool MenuOpen { set { _menuOpen = value; }}
+    public bool IsAttacking { get { return _attacking; }}
 
     public int StandardIdleHash { get { return _standardIdleHash; }}
     public int StandardRunHash { get { return _standardRunHash; }}
@@ -106,11 +111,13 @@ public class PlayerController : MonoBehaviour
         if (!_lockedIntoState) {
             _states.SwitchState(_states.GetState(2));
             _lockedIntoState = true;
+            _attacking = true;
         }
     }
 
     private void EndAction() {
         _lockedIntoState = false;
+        _attacking = false;
 
         if (_currentMovementInput == Vector2.zero) _states.SwitchState(_states.GetState(3));
         else _states.SwitchState(_states.GetState(0));
@@ -144,13 +151,28 @@ public class PlayerController : MonoBehaviour
                 ForceMode.Impulse);
         }
 
-        GenerateAnimationHashes();
+        UpdateEquipmentStats();
         Destroy(_selection.gameObject);
+    }
+
+    /*********** TO BE IMPLEMENTED LATER ************/
+    public bool HasKey() {
+        /*
+        if (hasKey) {
+            hasKey = false;
+            return true;
+        } else {
+            return false;
+        }
+        */
+        return false;
     }
     #endregion
 
     #region Other functions
-    private void GenerateAnimationHashes() {  // Call on Equip or Unequip
+    private void UpdateEquipmentStats() {  // Call on Equip or Unequip
+
+        // Animation Updates
         _standardIdleHash = _mainWeapon?._idle == null ? 
             Animator.StringToHash("Idle") : 
             Animator.StringToHash(_mainWeapon._idle.name);
@@ -162,14 +184,27 @@ public class PlayerController : MonoBehaviour
             _attack2 = Animator.StringToHash(_mainWeapon._attack2.name);
             _finisher = Animator.StringToHash(_mainWeapon._finisher.name);
         }
+
+        // Visual equipment update
+        if (_mainWeapon?._weapon != null) {
+            if (_equippedWeapon != null) Destroy(_equippedWeapon);
+            _equippedWeapon = Instantiate(_mainWeapon?._weapon, _hand.position, _hand.rotation, _hand);
+            _equippedWeapon.GetComponentInChildren<WeaponScript>().SetDamage(_mainWeapon._damage);
+        }
     }
 
     public bool CanMoveForward() {
-        return Physics.Raycast(
-            transform.position + Vector3.up, 
+        return !Physics.Raycast(
+            transform.position + Vector3.forward, 
             _appliedMovement,
-            0.5f
+            0.5f,
+            layerMask
         );
+    }
+
+    public void OnDeath() {
+        _states.SwitchState(_states.GetState(4));
+        _lockedIntoState = true;
     }
     #endregion
 
@@ -191,7 +226,7 @@ public class PlayerController : MonoBehaviour
 
         _standardDodgeHash = Animator.StringToHash("Dodge");
         _standardAttackHash = Animator.StringToHash("Hit");
-        GenerateAnimationHashes();
+        UpdateEquipmentStats();
 
         _playerInput.Player.Movement.performed += OnMovementInput;
         _playerInput.Player.Movement.canceled += OnMovementInput;

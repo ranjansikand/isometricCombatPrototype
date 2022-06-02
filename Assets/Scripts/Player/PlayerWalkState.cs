@@ -6,9 +6,8 @@ public class PlayerWalkState : PlayerBaseState
     float _walkSpeed;
 
     public PlayerWalkState(PlayerController currentContext) 
-            : base (currentContext) {
-        InitializeSubState();
-    }
+            : base (currentContext) {}
+
     public override void EnterState() {
         Ctx.Animator.Play(Ctx.StandardRunHash);
 
@@ -24,7 +23,6 @@ public class PlayerWalkState : PlayerBaseState
     public override void ExitState() {
         Ctx.NeedToSwitchToIdle = false;
     }
-    public override void InitializeSubState() {}
 
     void HandleMotion() {
         if (Ctx.CurrentMovementInput == Vector2.zero) {

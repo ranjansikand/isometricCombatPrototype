@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   _itemName: Sword
-  _itemType: 0
+  _description: A simple shortsword with quick attacks and moderate reach.
   _damage: 1
-  _attack1: {fileID: -1108164523259347411, guid: da0b5520c9ec59c4ca39e8fe094d369b, type: 3}
-  _attack2: {fileID: 1158634745205866218, guid: da0b5520c9ec59c4ca39e8fe094d369b, type: 3}
-  _finisher: {fileID: 4447012609936615250, guid: da0b5520c9ec59c4ca39e8fe094d369b, type: 3}
+  _attack1: {fileID: 7400000, guid: 7bfa3eee3dadd90409b536d736907429, type: 2}
+  _attack2: {fileID: 7400000, guid: cdf4968b112984540b7548086be53319, type: 2}
+  _finisher: {fileID: 7400000, guid: 53f5b6e61cf57e342ae9d1b894a3fd7a, type: 2}
   _idle: {fileID: 0}
   _run: {fileID: 0}
+  _weapon: {fileID: 5849255364623373877, guid: ec49c2dfcc48a8e41a48085887eeeb46, type: 3}

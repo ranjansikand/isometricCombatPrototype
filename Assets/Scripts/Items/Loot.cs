@@ -1,4 +1,5 @@
-
+// Script for physical item prefabs
+// All dropped items use this script
 
 using System.Collections;
 using UnityEngine;

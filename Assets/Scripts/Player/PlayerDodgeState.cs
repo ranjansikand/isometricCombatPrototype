@@ -6,9 +6,8 @@ public class PlayerDodgeState : PlayerBaseState
     float _dodgeSpeed;
 
     public PlayerDodgeState(PlayerController currentContext) 
-            : base (currentContext) {
-        InitializeSubState();
-    }
+            : base (currentContext) {}
+
     public override void EnterState() {
         // Lock direction to input at state entry
         _direction = Ctx.AppliedMovement != Vector3.zero ? 
@@ -29,5 +28,4 @@ public class PlayerDodgeState : PlayerBaseState
         } 
     }
     public override void ExitState() {}
-    public override void InitializeSubState() {}
 }

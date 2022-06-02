@@ -10,7 +10,7 @@ public class ItemPopup : MonoBehaviour
     private PlayerInput _playerInput;
 
     public GameObject _menuGUI;
-    public Text _label;
+    public Text _label, _description, _stats;
     private Item _item;
 
 
@@ -47,9 +47,19 @@ public class ItemPopup : MonoBehaviour
 
         // Update Display
         _label.text = _item.ItemName;
-        _menuGUI.SetActive(true);
+        _description.text = _item.ItemDescription;
 
-        // Call Event
+        // Update stats in menu
+        if (_item is Weapons wep) {
+            _stats.text = wep._damage + " damage";
+        } else if (_item is Talismans tal) {
+            _stats.text = tal.StatChangeDescription;
+        } else {
+            _stats.text = "";
+        }
+
+        // Open menus
+        _menuGUI.SetActive(true);
         _player.MenuOpen = true;
     }
 

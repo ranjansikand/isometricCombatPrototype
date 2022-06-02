@@ -5,6 +5,7 @@ public class PlayerStateFactory
     PlayerDodgeState _dodge;
     PlayerAttackState _attack;
     PlayerIdleState _idle;
+    PlayerDeathState _death;
 
     public PlayerStateFactory(PlayerController currentContext)
     {
@@ -17,6 +18,7 @@ public class PlayerStateFactory
         _dodge = new PlayerDodgeState(_context);
         _attack = new PlayerAttackState(_context);
         _idle = new PlayerIdleState(_context);
+        _death = new PlayerDeathState(_context);
     }
 
     public PlayerBaseState GetState(int index) {
@@ -25,6 +27,7 @@ public class PlayerStateFactory
             case 1: return _dodge;
             case 2: return _attack;
             case 3: return _idle;
+            case 4: return _death;
             default: return _idle;
         }
     }

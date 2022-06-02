@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e72a44d8504704ba0d30e18ab688aa, type: 3}
+  m_Name: Mace
+  m_EditorClassIdentifier: 
+  _itemName: Mace
+  _description: A simple blunt mace with slow, heavy attacks.
+  _damage: 2
+  _attack1: {fileID: 7400000, guid: 89f02ad935fa4164890b9f80c397aaa9, type: 2}
+  _attack2: {fileID: 7400000, guid: d0645c4c2c3bbd54d994c07ae60f496f, type: 2}
+  _finisher: {fileID: 7400000, guid: 8e374239f80ea6b4bb9c53a7b7f59e36, type: 2}
+  _idle: {fileID: 0}
+  _run: {fileID: 0}
+  _weapon: {fileID: 4483934938096805957, guid: 534da3554ec4fc741ad5a9fb81429ef3, type: 3}

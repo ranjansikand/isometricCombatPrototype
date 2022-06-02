@@ -5,9 +5,8 @@ using UnityEngine;
 public class PlayerIdleState : PlayerBaseState
 {
     public PlayerIdleState(PlayerController currentContext) 
-            : base (currentContext) {
-        InitializeSubState();
-    }
+            : base (currentContext) {}
+
     public override void EnterState() {
         Ctx.NeedToSwitchToIdle = false;
         
@@ -15,5 +14,4 @@ public class PlayerIdleState : PlayerBaseState
     }
     public override void UpdateState() {}
     public override void ExitState() {}
-    public override void InitializeSubState() {}
 }

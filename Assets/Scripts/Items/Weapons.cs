@@ -8,5 +8,7 @@ public class Weapons : Item
     public AnimationClip _finisher;
     public AnimationClip _idle, _run;
 
+    public GameObject _weapon;
+
     public override bool IsEquippable { get { return true; }}
 }

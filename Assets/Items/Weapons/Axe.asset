@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e72a44d8504704ba0d30e18ab688aa, type: 3}
+  m_Name: Axe
+  m_EditorClassIdentifier: 
+  _itemName: Axe
+  _description: A simple axe with slow, heavy attacks.
+  _damage: 2
+  _attack1: {fileID: 7400000, guid: 6ab9a201498e82f458378947242a23bb, type: 2}
+  _attack2: {fileID: 7400000, guid: ca076a6057c58a24c8f09c7fce65b356, type: 2}
+  _finisher: {fileID: 7400000, guid: 15abb682365e42842ab5b2abd5cfd4e2, type: 2}
+  _idle: {fileID: 0}
+  _run: {fileID: 0}
+  _weapon: {fileID: 4984171283451908537, guid: fcf392440ae18804d88605111cc5e454, type: 3}

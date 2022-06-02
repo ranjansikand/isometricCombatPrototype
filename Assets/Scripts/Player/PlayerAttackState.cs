@@ -9,26 +9,22 @@ public class PlayerAttackState : PlayerBaseState
     }
 
     public PlayerAttackState(PlayerController currentContext) 
-            : base (currentContext) {
-        InitializeSubState();
-    }
+            : base (currentContext) {}
+            
     public override void EnterState() {
         if (Ctx.ComboResetRoutine != null) Ctx.StopCoroutine(Ctx.ComboResetRoutine);
 
         if (Ctx.MainWeapon != null) {
             switch (Ctx.AttackNumber) {
                 case (1): 
-                    Debug.Log("Attack 1");
                     Ctx.Animator.Play(Ctx.Attack1);
                     Ctx.AttackNumber++;
                     break;
                 case (2):
-                    Debug.Log("Attack 2");
                     Ctx.Animator.Play(Ctx.Attack2);
                     Ctx.AttackNumber++;
                     break;
                 case (3): 
-                    Debug.Log("Finisher");
                     Ctx.Animator.Play(Ctx.Finisher);
                     Ctx.AttackNumber = 1;
                     break;
@@ -45,5 +41,4 @@ public class PlayerAttackState : PlayerBaseState
     public override void ExitState() {
         Ctx.ComboResetRoutine = Ctx.StartCoroutine(AttackResetRoutine());
     }
-    public override void InitializeSubState() {}
 }
