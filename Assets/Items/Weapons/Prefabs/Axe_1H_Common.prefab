@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6782703962950488975}
   - component: {fileID: 5236280769323520222}
   - component: {fileID: 5333314339426504243}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Axe1H_Basic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,8 +117,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4984171283451908538}
-  m_Layer: 0
-  m_Name: Axe_1H_Basic
+  m_Layer: 12
+  m_Name: Axe_1H_Common
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

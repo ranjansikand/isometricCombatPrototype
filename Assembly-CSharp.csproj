@@ -38,17 +38,18 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Player\PlayerDodgeState.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerIdleState.cs" />
-     <Compile Include="Assets\Scripts\Inventory\ItemGenerator.cs" />
+     <Compile Include="Assets\Scripts\Items\ItemGenerator.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerWalkState.cs" />
      <Compile Include="Assets\Scripts\Items\Item.cs" />
-     <Compile Include="Assets\Scripts\Inventory\Chest.cs" />
+     <Compile Include="Assets\Scripts\Items\Chest.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerAttackState.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerDeathState.cs" />
      <Compile Include="Assets\Scripts\Combat\WeaponScript.cs" />
      <Compile Include="Assets\Scripts\Combat\IDamageable.cs" />
      <Compile Include="Assets\Scripts\Items\Rotation.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerStateFactory.cs" />
-     <Compile Include="Assets\Scripts\Inventory\ItemPopup.cs" />
+     <Compile Include="Assets\Scripts\UI\ItemPopup.cs" />
      <Compile Include="Assets\Scripts\Items\Loot.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerBaseState.cs" />
      <Compile Include="Assets\Input\PlayerInput.cs" />
@@ -57,7 +58,8 @@
      <Compile Include="Assets\Scripts\Player\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\Player\ActionState.cs" />
      <Compile Include="Assets\Scripts\Items\Talismans.cs" />
-     <Compile Include="Assets\Scripts\Player\PlayerDeathState.cs" />
+     <Compile Include="Assets\Scripts\UI\KeyCount.cs" />
+     <Compile Include="Assets\Scripts\Items\Key.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.1f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

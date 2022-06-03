@@ -12,12 +12,12 @@ TagManager:
   - Water
   - UI
   - Items
-  - Weapon
   - Enemy
+  - EnemyWeapon
   - ItemNonCollide
-  - 
-  - 
-  - 
+  - Key
+  - Player
+  - PlayerWeapon
   - 
   - 
   - 

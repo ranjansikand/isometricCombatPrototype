@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour
     private CharacterController _characterController;
     private Animator _animator;
 
+    // events
+    public delegate void PlayerEvent(int value);
+    public static PlayerEvent keyCount;
+
     // State Machine
     private PlayerBaseState _currentState;
     private PlayerStateFactory _states;
@@ -46,6 +50,7 @@ public class PlayerController : MonoBehaviour
     private Weapons _mainWeapon;
     private Talismans _equippedTalisman;
 
+    private int _numberOfKeys = 0;
     private GameObject _equippedWeapon = null;  // weapon currently in use
     [SerializeField] private Transform _hand;  // weapon spawnpoint
     [SerializeField] private LayerMask layerMask;  // layer for ray
@@ -115,6 +120,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnDeath() {
+        _states.SwitchState(_states.GetState(4));
+        _lockedIntoState = true;
+    }
+
     private void EndAction() {
         _lockedIntoState = false;
         _attacking = false;
@@ -155,17 +165,19 @@ public class PlayerController : MonoBehaviour
         Destroy(_selection.gameObject);
     }
 
-    /*********** TO BE IMPLEMENTED LATER ************/
+    public void AddKey() { 
+        _numberOfKeys++; 
+        keyCount(_numberOfKeys);
+    }
+
     public bool HasKey() {
-        /*
-        if (hasKey) {
-            hasKey = false;
-            return true;
-        } else {
-            return false;
+        switch (_numberOfKeys > 0) {
+            case (true): 
+                _numberOfKeys--;
+                keyCount(_numberOfKeys);
+                return true;
+            case (false): return false;
         }
-        */
-        return false;
     }
     #endregion
 
@@ -201,11 +213,6 @@ public class PlayerController : MonoBehaviour
             layerMask
         );
     }
-
-    public void OnDeath() {
-        _states.SwitchState(_states.GetState(4));
-        _lockedIntoState = true;
-    }
     #endregion
 
     void Awake()
@@ -234,6 +241,7 @@ public class PlayerController : MonoBehaviour
         _playerInput.Player.Attack.performed += OnAttack;
 
         ActionState.onAnimationComplete += EndAction;
+        PlayerHealth.onDeath += OnDeath;
     }
 
     void Update()
@@ -249,6 +257,11 @@ public class PlayerController : MonoBehaviour
         if (_selection == null && !_menuOpen && other.gameObject.layer == 6) {
             _selection = other.GetComponent<Loot>();
             _selection?.SelectObject();
+        }
+
+        if (other.gameObject.layer == 10) {
+            AddKey();
+            Destroy(other.gameObject);
         }
     }
 
