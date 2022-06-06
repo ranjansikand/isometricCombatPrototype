@@ -13,4 +13,11 @@ public class Dummy : MonoBehaviour, IDamageable
     public void Damage(int damage) {
         Debug.Log("Hit for " + damage + " damage");
     }
+
+    void OnCollisionEnter(Collision other) {
+        if (other.gameObject.layer == 11) {
+            var hitbox = other.gameObject.GetComponent<IDamageable>();
+            hitbox?.Damage(10);
+        }
+    }
 }

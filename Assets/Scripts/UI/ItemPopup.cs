@@ -9,8 +9,10 @@ public class ItemPopup : MonoBehaviour
     public PlayerController _player;
     private PlayerInput _playerInput;
 
-    public GameObject _menuGUI;
+    public GameObject _menuGUI, _damageSlot;
     public Text _label, _description, _stats;
+    public Image _icon;
+
     private Item _item;
 
 
@@ -18,7 +20,7 @@ public class ItemPopup : MonoBehaviour
     private void OnEnable() { _playerInput.Enable(); }
     private void OnDisable() { _playerInput.Disable(); }
     
-    void OnPickup(InputAction.CallbackContext context) {
+    private void OnPickup(InputAction.CallbackContext context) {
         if (_player == null)_player = PlayerController.instance;
 
         if (_player.Selection != null) {
@@ -40,6 +42,16 @@ public class ItemPopup : MonoBehaviour
     }
 
     #endregion
+    #region clickable buttons
+    public void EquipButtonClicked() {
+        _player.EquipSelection();
+        CloseMenu();
+    }
+
+    public void CancelButtonClicked() {
+        CloseMenu();
+    }
+    #endregion
 
     private void OpenMenu() {
         // Set Item
@@ -51,11 +63,11 @@ public class ItemPopup : MonoBehaviour
 
         // Update stats in menu
         if (_item is Weapons wep) {
-            _stats.text = wep._damage + " damage";
-        } else if (_item is Talismans tal) {
-            _stats.text = tal.StatChangeDescription;
-        } else {
-            _stats.text = "";
+            _damageSlot.SetActive(true);
+            _stats.text = wep._damage.ToString();
+        } 
+        else {
+            _damageSlot.SetActive(false);
         }
 
         // Open menus
