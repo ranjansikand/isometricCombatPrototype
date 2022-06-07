@@ -16,6 +16,8 @@ public class ItemPopup : MonoBehaviour
     private Item _item;
 
 
+    private bool _isDead;
+
     #region input action functions
     private void OnEnable() { _playerInput.Enable(); }
     private void OnDisable() { _playerInput.Disable(); }
@@ -44,11 +46,13 @@ public class ItemPopup : MonoBehaviour
     #endregion
     #region clickable buttons
     public void EquipButtonClicked() {
+        if (_isDead) return;
         _player.EquipSelection();
         CloseMenu();
     }
 
     public void CancelButtonClicked() {
+        if (_isDead) return;
         CloseMenu();
     }
     #endregion
@@ -95,6 +99,8 @@ public class ItemPopup : MonoBehaviour
         _playerInput.Player.Action.canceled -= OnPickup;
         _playerInput.Player.Cancel.performed += OnDiscard;
         _playerInput.Player.Cancel.canceled -= OnDiscard;
+
+        PlayerHealth.onDeath += OnDisable;
 
         _menuGUI.SetActive(false);
     }

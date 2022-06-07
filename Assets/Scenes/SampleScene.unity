@@ -554,7 +554,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!1 &564799380
 GameObject:
@@ -2049,7 +2049,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 2027033276}
-  _chipSpeed: 3
   _frontBar: {fileID: 843086319}
   _backBar: {fileID: 2049298245}
 --- !u!1 &1827019353

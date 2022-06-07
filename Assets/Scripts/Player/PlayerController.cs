@@ -122,7 +122,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnDeath() {
         _states.SwitchState(_states.GetState(4));
-        _lockedIntoState = true;
     }
 
     private void EndAction() {
@@ -132,7 +131,6 @@ public class PlayerController : MonoBehaviour
         if (_currentMovementInput == Vector2.zero) _states.SwitchState(_states.GetState(3));
         else _states.SwitchState(_states.GetState(0));
     }
-
     #endregion
 
     #region Inventory-Based Functions
@@ -242,6 +240,7 @@ public class PlayerController : MonoBehaviour
 
         ActionState.onAnimationComplete += EndAction;
         PlayerHealth.onDeath += OnDeath;
+        PlayerHealth.onDeath += OnDisable;
     }
 
     void Update()
