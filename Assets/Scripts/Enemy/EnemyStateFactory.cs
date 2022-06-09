@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum EnemyStates { Patrol, Attack, Combat, Dead }
 
-public class EnemyStateFactory : MonoBehaviour
+public class EnemyStateFactory
 {
     EnemyBase _context;
 
@@ -42,6 +42,7 @@ public class EnemyStateFactory : MonoBehaviour
                 newState = _patrol; break;
         }
 
+        _context.CurrentState = newState;
         _context.CurrentState.EnterState();
     }
 }

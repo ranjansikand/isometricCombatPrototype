@@ -2,6 +2,7 @@
 
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class WeaponScript : MonoBehaviour
 {
     static int damage;
@@ -10,7 +11,7 @@ public class WeaponScript : MonoBehaviour
         damage = baseDamage;
     }
 
-    void OnTriggerEnter(Collider other) {
+    public virtual void OnTriggerEnter(Collider other) {
         if (PlayerController.instance.IsAttacking) {
             var hitbox = other.GetComponent<IDamageable>();
             hitbox?.Damage(damage);

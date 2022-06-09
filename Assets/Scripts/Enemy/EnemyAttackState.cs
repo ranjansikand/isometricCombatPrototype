@@ -6,9 +6,15 @@ public class EnemyAttackState : EnemyBaseState
 {
     public EnemyAttackState(EnemyBase currentContext) : base (currentContext) {}
 
-    public override void EnterState() {}
+    public override void EnterState() {
+        Ctx.IsAttacking = true;
+
+        Ctx.Animator.Play(Ctx.AttackHash);
+    }
 
     public override void UpdateState() {}
 
-    public override void ExitState() {}
+    public override void ExitState() {
+        Ctx.IsAttacking = false;
+    }
 }

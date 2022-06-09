@@ -260,8 +260,8 @@
      <Compile Include="Library\PackageCache\com.unity.timeline@1.4.6\Editor\Manipulators\TimeAreaAutoPanner.cs" />
      <Compile Include="Library\PackageCache\com.unity.timeline@1.4.6\Editor\Signals\TreeView\SignalListFactory.cs" />
      <Compile Include="Library\PackageCache\com.unity.timeline@1.4.6\Editor\Playables\ControlPlayableInspector.cs" />
-     <Compile Include="Library\PackageCache\com.unity.timeline@1.4.6\Editor\Window\TimelineWindow_HeaderGui.cs" />
      <Compile Include="Library\PackageCache\com.unity.timeline@1.4.6\Editor\treeview\Manipulator.cs" />
+     <Compile Include="Library\PackageCache\com.unity.timeline@1.4.6\Editor\Window\TimelineWindow_HeaderGui.cs" />
      <Compile Include="Library\PackageCache\com.unity.timeline@1.4.6\Editor\inspectors\ClipInspector\ClipInspectorSelectionInfo.cs" />
      <Compile Include="Library\PackageCache\com.unity.timeline@1.4.6\Editor\DirectorStyles.cs" />
      <Compile Include="Library\PackageCache\com.unity.timeline@1.4.6\Editor\Manipulators\AddDelete\AddDeleteItemModeRipple.cs" />

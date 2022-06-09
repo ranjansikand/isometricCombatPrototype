@@ -300,10 +300,10 @@
      <Compile Include="Library\PackageCache\com.unity.inputsystem@1.2.0\InputSystem\Plugins\Users\InputUserChange.cs" />
      <Compile Include="Library\PackageCache\com.unity.inputsystem@1.2.0\InputSystem\Plugins\UI\ExtendedPointerEventData.cs" />
      <Compile Include="Library\PackageCache\com.unity.inputsystem@1.2.0\InputSystem\Controls\Processors\NormalizeProcessor.cs" />
-     <Compile Include="Library\PackageCache\com.unity.inputsystem@1.2.0\InputSystem\Devices\Pen.cs" />
-     <Compile Include="Library\PackageCache\com.unity.inputsystem@1.2.0\InputSystem\Actions\InputActionPhase.cs" />
-     <Compile Include="Library\PackageCache\com.unity.inputsystem@1.2.0\InputSystem\Utilities\SavedState.cs" />
      <Compile Include="Library\PackageCache\com.unity.inputsystem@1.2.0\InputSystem\Plugins\Android\AndroidKeyCode.cs" />
+     <Compile Include="Library\PackageCache\com.unity.inputsystem@1.2.0\InputSystem\Actions\InputActionPhase.cs" />
+     <Compile Include="Library\PackageCache\com.unity.inputsystem@1.2.0\InputSystem\Devices\Pen.cs" />
+     <Compile Include="Library\PackageCache\com.unity.inputsystem@1.2.0\InputSystem\Utilities\SavedState.cs" />
      <Compile Include="Library\PackageCache\com.unity.inputsystem@1.2.0\InputSystem\State\InputStateBlock.cs" />
      <Compile Include="Library\PackageCache\com.unity.inputsystem@1.2.0\InputSystem\Events\DeviceResetEvent.cs" />
      <Compile Include="Library\PackageCache\com.unity.inputsystem@1.2.0\InputSystem\Events\InputEventBuffer.cs" />

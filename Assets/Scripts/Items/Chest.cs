@@ -11,8 +11,8 @@ public class Chest : MonoBehaviour, IDamageable
     private Animator animator;
     private bool open = false, opening = false;
 
-    [SerializeField]
-    bool locked = false;
+    [SerializeField] bool locked = false;
+    [SerializeField] ParticleSystem lockedEffect;
 
     void Start() {
         animator = GetComponent<Animator>();
@@ -40,8 +40,7 @@ public class Chest : MonoBehaviour, IDamageable
     }
 
     void Locked() {
-        opening = true;
-        animator.SetTrigger("No Key");
-        opening = false;
+        lockedEffect.Play();
+        Debug.Log("Locked");
     }
 }

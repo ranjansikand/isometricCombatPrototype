@@ -30,7 +30,8 @@ public class Healthbar : MonoBehaviour
 
     void OnHealthUpdate() 
     {
-        StopCoroutine(UpdateBackBar());
+        // StopCoroutine(UpdateBackBar()); Testing effect without this
+
         // Update Frame to reflect max health changes
         _frontBar.fillAmount = 1.0f * _player.Health / _player.MaxHealth;
         

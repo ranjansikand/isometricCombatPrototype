@@ -8,7 +8,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private int _maxHealth;
     private int _health;
 
+    private WaitForSeconds _recoveryTime = new WaitForSeconds(0.75f);
     private bool _dead = false;
+    private bool _recovering = false;
 
     public int Health { get {return _health; }}
     public int MaxHealth { get { return _maxHealth; }}
@@ -22,13 +24,14 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     }
 
     public void Damage(int damage) {
-        // If not dead, reduce health
-        if (_dead) return;
+        if (_dead || _recovering) return;
+
         _health -= damage;
         onHealthUpdate();
 
         // check if player died
         if (_health <= 0) Dead();
+        else StartCoroutine(Recovery());
     }
 
     void Dead() {
@@ -52,5 +55,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         }
 
         onHealthUpdate();
+    }
+
+    IEnumerator Recovery() {
+        _recovering = true;
+        yield return _recoveryTime;
+        _recovering = false;
     }
 }

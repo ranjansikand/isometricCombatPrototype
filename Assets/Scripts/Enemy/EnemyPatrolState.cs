@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyPatrolState : EnemyBaseState
 {
+    #region variables
     Vector3 _startingPosition;
     Vector3 _destination;
-
     int _groundLayer = 1 << 3;
-
     WaitForSeconds _delay = new WaitForSeconds(0.5f);
+    #endregion
 
     public EnemyPatrolState(EnemyBase currentContext) : base (currentContext) {}
 
@@ -19,8 +19,10 @@ public class EnemyPatrolState : EnemyBaseState
     }
 
     public override void UpdateState() {}
+
     public override void ExitState() {}
 
+    #region state-specific functions
     IEnumerator CheckForTarget() {
         bool stillLooking = true;
 
@@ -63,4 +65,5 @@ public class EnemyPatrolState : EnemyBaseState
             Ctx.Agent.SetDestination(_destination);
         }
     }
+    #endregion
 }

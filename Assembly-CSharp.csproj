@@ -38,6 +38,8 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Player\States\PlayerDodgeState.cs" />
      <Compile Include="Assets\Scripts\UI\Healthbar.cs" />
+     <Compile Include="Assets\Scripts\Combat\Dummy.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyDeathState.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyBaseState.cs" />
      <Compile Include="Assets\Scripts\Player\States\PlayerIdleState.cs" />
      <Compile Include="Assets\Scripts\Items\ItemGenerator.cs" />
@@ -50,9 +52,12 @@
      <Compile Include="Assets\Scripts\Player\States\PlayerDeathState.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyPatrolState.cs" />
      <Compile Include="Assets\Scripts\Combat\WeaponScript.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyAttackState.cs" />
      <Compile Include="Assets\Scripts\Combat\IDamageable.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyStateFactory.cs" />
      <Compile Include="Assets\Scripts\Items\Rotation.cs" />
      <Compile Include="Assets\Scripts\Player\States\PlayerStateFactory.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyCombatState.cs" />
      <Compile Include="Assets\Scripts\UI\ItemPopup.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyBase.cs" />
      <Compile Include="Assets\Scripts\UI\KeyCount.cs" />
@@ -60,14 +65,12 @@
      <Compile Include="Assets\Scripts\Player\States\PlayerBaseState.cs" />
      <Compile Include="Assets\Input\PlayerInput.cs" />
      <Compile Include="Assets\Scripts\Items\Weapons.cs" />
-     <Compile Include="Assets\Scripts\Combat\Dummy.cs" />
+     <Compile Include="Assets\Scripts\Items\CubeSpawner.cs" />
      <Compile Include="Assets\Scripts\Player\Health\PlayerHealth.cs" />
+     <Compile Include="Assets\Scripts\Combat\PlayerHand.cs" />
      <Compile Include="Assets\Scripts\Player\ActionState.cs" />
      <Compile Include="Assets\Scripts\Items\Talismans.cs" />
-     <Compile Include="Assets\Scripts\Enemy\EnemyStateFactory.cs" />
-     <Compile Include="Assets\Scripts\Enemy\EnemyDeathState.cs" />
-     <Compile Include="Assets\Scripts\Enemy\EnemyAttackState.cs" />
-     <Compile Include="Assets\Scripts\Enemy\EnemyCombatState.cs" />
+     <Compile Include="Assets\Scripts\Combat\EnemyWeapon.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.1f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

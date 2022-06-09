@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class Dummy : MonoBehaviour, IDamageable
 {
-    [SerializeField] Item sword;
+    [SerializeField] int health = 1;
 
-    void Start() {
-        ItemGenerator.instance.SpawnObject(transform.position, sword);
+    Animator animator;
+    bool dead = false;
+
+    void Awake() {
+        animator = GetComponent<Animator>();
     }
 
     public void Damage(int damage) {
-        Debug.Log("Hit for " + damage + " damage");
-    }
+        if (!dead) {
+            health -= damage;
 
-    void OnCollisionEnter(Collision other) {
-        if (other.gameObject.layer == 11) {
-            var hitbox = other.gameObject.GetComponent<IDamageable>();
-            hitbox?.Damage(10);
+            if (health <= 0) 
+            {
+                dead = true;
+                animator.Play("Death");
+            }
         }
     }
 }
