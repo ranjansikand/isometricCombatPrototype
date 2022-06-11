@@ -13,6 +13,7 @@ public class EnemyDeathState : EnemyBaseState
         Ctx.Agent.enabled = false;
 
         Ctx.Animator.Play(Ctx.DeathHash);
+        Ctx.enabled = false;
     }
 
     public override void UpdateState() {}

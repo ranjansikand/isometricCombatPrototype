@@ -9,12 +9,14 @@ public class EnemyStateFactory
     EnemyBase _context;
 
     // states
-    EnemyPatrolState _patrol;
-    EnemyAttackState _attack;
-    EnemyCombatState _combat;
-    EnemyDeathState _death;
+    private EnemyPatrolState _patrol;
+    private EnemyAttackState _attack;
+    private EnemyCombatState _combat;
+    private EnemyDeathState _death;
 
-    public EnemyStateFactory(EnemyBase context) { _context = context; }
+    public EnemyStateFactory(EnemyBase context) { 
+        _context = context;
+    }
 
     public void GenerateStates() 
     {

@@ -16,30 +16,28 @@ public class EnemyBase : MonoBehaviour, IDamageable
     Animator _animator;
     NavMeshAgent _agent;
 
-    [SerializeField] private int _health = 1;
-    private bool _dead = false;
+    [SerializeField]
+    EnemyData _data;
 
-    [SerializeField] private int _damage = 10;
+    private int _health;
+
+    private bool _dead = false;
     private bool _isAttacking = false;
 
-    // Detection
-    Transform _target;
-    [SerializeField] private float _sightRange = 2;
-    [SerializeField] private float _patrolRadius = 2;
-    [SerializeField] private float _circleRadius = 3.5f;
-    [SerializeField] private float _attackRadius = 2;
-    [SerializeField] private LayerMask _layerMask;
-
-    bool _isWalking = false;
-
-    static Collider[] _targetsBuffer = new Collider[100];
+    private Transform _target;
+    private static Collider[] _targetsBuffer = new Collider[100];
 
     // Animation States
     private int _walkHash;
-    private int _attackHash;
+    private int _closeAttackHash;
+    private int _rangeAttackHash;
     private int _hurtHash;
     private int _idleHash;
     private int _deathHash;
+
+    // AI Modules
+    private Patrol _patrol;
+    private Combat _combat;
 
 
     #region getters and setters
@@ -49,22 +47,24 @@ public class EnemyBase : MonoBehaviour, IDamageable
     public NavMeshAgent Agent { get { return _agent; }}
 
     public Transform Target { get { return _target; }}
-    public LayerMask LayerMask { get { return _layerMask; }}
+    public LayerMask LayerMask { get { return _data.layerMask; }}
 
     public bool Dead { get { return _dead; } set { _dead = value; }}
     public bool IsAttacking { get { return _isAttacking; } set { _isAttacking = value; }}
 
     public int Health { get { return _health; } set { _health = value; }}
 
-    public int AttackHash { get { return _attackHash; }}
-    public int WalkHash { get { return _walkHash; }}
+    public int CloseAttackHash { get { return _closeAttackHash; }}
+    public int RangeAttackHash { get { return _rangeAttackHash; }}
     public int HurtHash { get { return _hurtHash; }}
     public int IdleHash { get { return _idleHash; }}
     public int DeathHash { get { return _deathHash; }}
 
-    public float PatrolRadius { get { return _patrolRadius; }}
-    public float AttackRadius { get { return _attackRadius; }}
-    public float CircleRadius { get { return _circleRadius; }}
+    public Vector2 AttackRadius { get { return _data.attackRadius; }}
+    public float CircleRadius { get { return _data.circleRadius; }}
+
+    public Patrol Patrol { get { return _patrol; }}
+    public Combat Combat { get { return _combat; }}
     #endregion
 
 
@@ -83,6 +83,43 @@ public class EnemyBase : MonoBehaviour, IDamageable
 
     public virtual void Update() {
         _currentState.UpdateState();
+        AdjustForWalking();
+    }
+
+
+    public virtual void PrepValues() {
+        // Pull data from Scriptable Object
+        _health = _data.maxHealth;
+        GetComponentInChildren<EnemyWeapon>().SetDamage(_data.baseDamage);
+
+        // set modules
+        _patrol = _data.GeneratePatrolAction(this);
+        _combat = _data.GenerateCombatAction(this);
+
+        _closeAttackHash = Animator.StringToHash("Close Attack");
+        _rangeAttackHash = Animator.StringToHash("Range Attack");
+        _walkHash = Animator.StringToHash("walk");
+        _hurtHash = Animator.StringToHash("Hurt");
+        _idleHash = Animator.StringToHash("Idle");
+        _deathHash = Animator.StringToHash("Death");
+    }
+
+
+    public bool AcquireTarget () {
+        Vector3 a = transform.localPosition;
+        Vector3 b = a;
+        b.y += 2f;
+        int hits = Physics.OverlapCapsuleNonAlloc(
+            a, b, _data.sightRange, _targetsBuffer, _data.layerMask);
+        if (hits > 0) {
+            for (int i = 0; i < hits; i++) {
+                _target = _targetsBuffer[i].GetComponent<Collider>().gameObject.transform;
+            }
+            Debug.Assert(_target != null, "Targeted non-enemy!", _targetsBuffer[0]);
+            return true;
+        }
+        _target = null;
+        return false;
     }
 
     public virtual void Damage(int damage) {
@@ -96,54 +133,17 @@ public class EnemyBase : MonoBehaviour, IDamageable
         }
     }
 
-    public virtual void PrepValues() 
-    {
-        GetComponentInChildren<EnemyWeapon>().SetDamage(_damage);
-
-        _attackHash = Animator.StringToHash("Attack");
-        _walkHash = Animator.StringToHash("Walk");
-        _hurtHash = Animator.StringToHash("Hurt");
-        _idleHash = Animator.StringToHash("Idle");
-        _deathHash = Animator.StringToHash("Death");
-    }
-
-    public bool AcquireTarget () {
-        Vector3 a = transform.localPosition;
-        Vector3 b = a;
-        b.y += 2f;
-        int hits = Physics.OverlapCapsuleNonAlloc(
-            a, b, _sightRange, _targetsBuffer, _layerMask);
-        if (hits > 0) {
-            for (int i = 0; i < hits; i++)
-            {
-                _target = _targetsBuffer[i].GetComponent<Collider>().gameObject.transform;
-            }
-            Debug.Assert(_target != null, "Targeted non-enemy!", _targetsBuffer[0]);
-            return true;
-        }
-        _target = null;
-        return false;
-    }
-    
     public virtual void HurtEffect() {}
 
     public virtual void AdjustForWalking() {
-        if (!_isWalking && _agent.velocity.magnitude > 1.7f) {
-            _isWalking = true;
-            _animator.Play(_walkHash);
-        }
-        else {
-            _isWalking = false;
-            _animator.Play(_idleHash);
-        }
+        if (!_animator.GetBool(_walkHash) && _agent.velocity.sqrMagnitude > 1f) 
+            _animator.SetBool(_walkHash, true); 
+        if (_animator.GetBool(_walkHash) && _agent.velocity.sqrMagnitude < 1f)
+            _animator.SetBool(_walkHash, false);
     }
     
     public virtual void TargetFound() {
-        if (_target == null) {
-            Debug.LogWarning("Incorrect function call!");
-            return;
-        }
-
+        if (_target == null) { Debug.LogWarning("Target Error!"); return; }
         _states.SwitchState(EnemyStates.Combat);
     }
 
@@ -154,7 +154,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
     public virtual void ReadyToAttack() {
         Vector3 direction = transform.position - _target.position;
 
-        if (direction.sqrMagnitude < _attackRadius * _attackRadius) {
+        if (direction.sqrMagnitude < _data.attackRadius.x * _data.attackRadius.x) {
             LaunchAttack();
         } else {
             _states.SwitchState(EnemyStates.Combat);

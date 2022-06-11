@@ -9,7 +9,7 @@ public class EnemyAttackState : EnemyBaseState
     public override void EnterState() {
         Ctx.IsAttacking = true;
 
-        Ctx.Animator.Play(Ctx.AttackHash);
+        Ctx.Animator.Play(Ctx.CloseAttackHash);
     }
 
     public override void UpdateState() {}
