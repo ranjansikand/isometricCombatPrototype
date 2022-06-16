@@ -23,6 +23,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
 
     private bool _dead = false;
     private bool _isAttacking = false;
+    private bool _justAttacked = false;
 
     private Transform _target;
     private static Collider[] _targetsBuffer = new Collider[100];
@@ -38,6 +39,8 @@ public class EnemyBase : MonoBehaviour, IDamageable
     // AI Modules
     private Patrol _patrol;
     private Combat _combat;
+    private Attack _attack1;
+    private Attack _attack2;
 
 
     #region getters and setters
@@ -49,8 +52,11 @@ public class EnemyBase : MonoBehaviour, IDamageable
     public Transform Target { get { return _target; }}
     public LayerMask LayerMask { get { return _data.layerMask; }}
 
+    public CombatAction Role { get { return _data.combatRole; }}
+
     public bool Dead { get { return _dead; } set { _dead = value; }}
     public bool IsAttacking { get { return _isAttacking; } set { _isAttacking = value; }}
+    public bool JustAttacked { get { return _justAttacked; } set { _justAttacked = value; }}
 
     public int Health { get { return _health; } set { _health = value; }}
 
@@ -65,6 +71,8 @@ public class EnemyBase : MonoBehaviour, IDamageable
 
     public Patrol Patrol { get { return _patrol; }}
     public Combat Combat { get { return _combat; }}
+    public Attack Attack1 { get { return _attack1; }}
+    public Attack Attack2 { get { return _attack2; }}
     #endregion
 
 
@@ -92,16 +100,18 @@ public class EnemyBase : MonoBehaviour, IDamageable
         _health = _data.maxHealth;
         GetComponentInChildren<EnemyWeapon>().SetDamage(_data.baseDamage);
 
-        // set modules
-        _patrol = _data.GeneratePatrolAction(this);
-        _combat = _data.GenerateCombatAction(this);
-
         _closeAttackHash = Animator.StringToHash("Close Attack");
         _rangeAttackHash = Animator.StringToHash("Range Attack");
         _walkHash = Animator.StringToHash("walk");
         _hurtHash = Animator.StringToHash("Hurt");
         _idleHash = Animator.StringToHash("Idle");
         _deathHash = Animator.StringToHash("Death");
+
+        // set modules
+        _patrol = _data.GeneratePatrolAction(this);
+        _combat = new Combat(this);
+        _attack1 = _data.GenerateAttack1(this, _closeAttackHash, _data.attackRole1);
+        _attack2 = _data.GenerateAttack1(this, _closeAttackHash, _data.attackRole2);
     }
 
 
@@ -144,6 +154,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
     
     public virtual void TargetFound() {
         if (_target == null) { Debug.LogWarning("Target Error!"); return; }
+        EnemyManager.instance.AddToEnemyList(this);
         _states.SwitchState(EnemyStates.Combat);
     }
 
@@ -151,18 +162,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
         _states.SwitchState(EnemyStates.Combat); 
     }
 
-    public virtual void ReadyToAttack() {
-        Vector3 direction = transform.position - _target.position;
-
-        if (direction.sqrMagnitude < _data.attackRadius.x * _data.attackRadius.x) {
-            LaunchAttack();
-        } else {
-            _states.SwitchState(EnemyStates.Combat);
-        }
-    }
-
     public virtual void LaunchAttack() {
-        // Signposting effect
-        _states.SwitchState(EnemyStates.Attack);
+        _states.SwitchState(EnemyStates.CloseAttack);
     }
 }

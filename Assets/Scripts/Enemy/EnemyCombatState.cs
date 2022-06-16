@@ -16,5 +16,6 @@ public class EnemyCombatState : EnemyBaseState
 
     public override void ExitState() {
         Ctx.StopAllCoroutines();
+        Ctx.Agent.SetDestination(Ctx.transform.position);
     }
 }

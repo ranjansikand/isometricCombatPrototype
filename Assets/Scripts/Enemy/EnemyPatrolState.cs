@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyPatrolState : EnemyBaseState
 {
-    private WaitForSeconds _delay = new WaitForSeconds(0.5f);
+    private static WaitForSeconds _delay = new WaitForSeconds(0.5f);
 
     public EnemyPatrolState(EnemyBase currentContext) : base (currentContext) {
         Ctx = currentContext;
@@ -22,8 +22,9 @@ public class EnemyPatrolState : EnemyBaseState
     }
 
     IEnumerator CheckForTarget() {
-        bool stillLooking = true;
+        yield return _delay;
 
+        bool stillLooking = true;
         while (stillLooking) {
             if (Ctx.AcquireTarget()) {
                 stillLooking = false;

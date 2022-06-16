@@ -8,8 +8,9 @@ public class EnemyDeathState : EnemyBaseState
 
     public override void EnterState() {
         Ctx.Dead = true;
+        EnemyManager.instance.RemoveFromCombat(Ctx);
 
-        Ctx.GetComponent<Collider>().enabled = false;
+        Ctx.GetComponent<BoxCollider>().enabled = false;
         Ctx.Agent.enabled = false;
 
         Ctx.Animator.Play(Ctx.DeathHash);

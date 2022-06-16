@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemName: Quickstep Talisman
   _description: Manipulates gravity to make the wearer move faster!
+  _icon: {fileID: 0}
   _walkSpeedModifer: 1.5
-  _dodgeSpeedModifier: 1.25
+  _dodgeSpeedModifier: 1
   _statChangeDescription: +50% movement speed
