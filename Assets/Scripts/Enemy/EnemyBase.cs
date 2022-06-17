@@ -50,9 +50,6 @@ public class EnemyBase : MonoBehaviour, IDamageable
     public NavMeshAgent Agent { get { return _agent; }}
 
     public Transform Target { get { return _target; }}
-    public LayerMask LayerMask { get { return _data.layerMask; }}
-
-    public CombatAction Role { get { return _data.combatRole; }}
 
     public bool Dead { get { return _dead; } set { _dead = value; }}
     public bool IsAttacking { get { return _isAttacking; } set { _isAttacking = value; }}
@@ -60,9 +57,6 @@ public class EnemyBase : MonoBehaviour, IDamageable
 
     public int Health { get { return _health; } set { _health = value; }}
 
-    public int CloseAttackHash { get { return _closeAttackHash; }}
-    public int RangeAttackHash { get { return _rangeAttackHash; }}
-    public int HurtHash { get { return _hurtHash; }}
     public int IdleHash { get { return _idleHash; }}
     public int DeathHash { get { return _deathHash; }}
 
@@ -159,6 +153,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
     }
 
     public virtual void AttackComplete() { 
+        // Called by animation events to end animation
         _states.SwitchState(EnemyStates.Combat); 
     }
 

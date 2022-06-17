@@ -12,15 +12,15 @@ public class EnemyWeapon : MonoBehaviour
     void Awake() {
         _activeState = topParent.GetComponent<EnemyBase>();
     }
-
+    
+    void OnTriggerEnter(Collider other) {
+            if (_activeState.IsAttacking && other.gameObject != topParent) {
+                var hitbox = other.GetComponent<IDamageable>();
+                hitbox?.Damage(damage);
+            }
+        }
+    
     public void SetDamage(int baseDamage) {
         damage = baseDamage;
-    }
-
-    void OnTriggerEnter(Collider other) {
-        if (_activeState.IsAttacking && other.gameObject != topParent) {
-            var hitbox = other.GetComponent<IDamageable>();
-            hitbox?.Damage(damage);
-        }
-    }
+    }    
 }

@@ -30,10 +30,16 @@ public class PatrolCircle : Patrol
     Vector3 GeneratePosition() {
         Vector3 checkPos = new Vector3(0, 100, 0);
         Vector2 buffer = Vector2.one;
-        
-        while (!Physics.Raycast(checkPos, Vector3.down, 2f, GroundLayer)) {
-            buffer = Random.insideUnitCircle * _patrolRadius;
-            checkPos = StartPos + new Vector3(buffer.x, 0, buffer.y);
+
+        // Generate a new point up to 60 times
+        for (int i = 0; i < 60; i++) {
+            if (Physics.Raycast(checkPos, Vector3.down, 2f, GroundLayer)) {
+                break;
+            }
+            else {
+                buffer = Random.insideUnitCircle * _patrolRadius;
+                checkPos = StartPos + new Vector3(buffer.x, 0, buffer.y);
+            }
         }
 
         return checkPos;

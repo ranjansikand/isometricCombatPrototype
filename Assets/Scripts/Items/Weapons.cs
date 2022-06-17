@@ -10,5 +10,5 @@ public class Weapons : Item
 
     public GameObject _weapon;
 
-    public override bool IsEquippable { get { return true; }}
+    public override bool IsEquippable() { return true; }
 }

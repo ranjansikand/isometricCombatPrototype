@@ -1,3 +1,5 @@
+// Will be used when the enemies can defend themselves
+
 using UnityEngine;
 
 public class DamageCalculator : MonoBehaviour {

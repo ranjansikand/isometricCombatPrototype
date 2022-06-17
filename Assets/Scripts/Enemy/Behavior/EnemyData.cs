@@ -18,7 +18,6 @@ public class EnemyData : ScriptableObject
     public Vector2 attackRadius = Vector2.one;
     public LayerMask layerMask;
     public PatrolAction patrolAction;
-    public CombatAction combatRole;
     public AttackAction attackRole1;
     public AttackAction attackRole2;
 

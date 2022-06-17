@@ -23,7 +23,9 @@ public class AttackMelee : Attack
         yield return new WaitForSeconds(
             Vector3.Distance(Ctx.Target.position, Ctx.transform.position)/
             Ctx.Agent.speed);
-        Ctx.Agent.SetDestination(Ctx.transform.position);
-        Ctx.Animator.Play(AnimationHash);
+        if (!Ctx.Dead) {
+            Ctx.Agent.SetDestination(Ctx.transform.position);
+            Ctx.Animator.Play(AnimationHash);
+        }
     }
 }

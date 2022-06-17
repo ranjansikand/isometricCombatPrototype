@@ -31,7 +31,7 @@ public class ItemPopup : MonoBehaviour
                     OpenMenu();
                     break;
                 case (true):
-                    _player.EquipSelection();
+                    EquipOrUseItem();
                     CloseMenu();
                     break;
             }
@@ -44,10 +44,10 @@ public class ItemPopup : MonoBehaviour
     }
 
     #endregion
-    #region clickable buttons
+    #region clickable UI buttons
     public void EquipButtonClicked() {
         if (_isDead) return;
-        _player.EquipSelection();
+        EquipOrUseItem();
         CloseMenu();
     }
 
@@ -64,12 +64,17 @@ public class ItemPopup : MonoBehaviour
         // Update Display
         _label.text = _item.ItemName;
         _description.text = _item.ItemDescription;
+        _icon.sprite = _item.Icon;
 
         // Update stats in menu
         if (_item is Weapons wep) {
             _damageSlot.SetActive(true);
             _stats.text = wep._damage.ToString();
-        } 
+        }
+        else if (_item is Potions pot) {
+            _damageSlot.SetActive(true);
+            _stats.text = pot._healAmount.ToString();
+        }
         else {
             _damageSlot.SetActive(false);
         }
@@ -89,6 +94,15 @@ public class ItemPopup : MonoBehaviour
 
         // Call Event
         _player.MenuOpen = false;
+    }
+
+    private void EquipOrUseItem() {
+        if (_item.IsEquippable()) {
+            _player.EquipSelection();
+        }
+        else {
+            Debug.Log("Add item to inventory");
+        }
     }
     
 

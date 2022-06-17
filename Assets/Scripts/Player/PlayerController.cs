@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     // events
     public delegate void PlayerEvent(int value);
     public static PlayerEvent keyCount;
+    public static PlayerEvent maxHealthUpdate;
+    public static PlayerEvent usePotion;
 
     // State Machine
     private PlayerBaseState _currentState;
@@ -87,7 +89,6 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 CurrentMovementInput { get { return _currentMovementInput; }}
     public Vector3 AppliedMovement { get { return _appliedMovement; } set { _appliedMovement = value; }}
-    public Vector3 CurrentPosition { get { return transform.position; }}
     #endregion
 
     #region input and event callback functions
@@ -147,6 +148,8 @@ public class PlayerController : MonoBehaviour
             _mainWeapon = wep;
         }
         else if (_selection.Item is Talismans tal) {
+            if (_equippedTalisman != null) 
+                maxHealthUpdate(-_equippedTalisman._maxHealthChange);
             waste = _equippedTalisman;
             _equippedTalisman = tal;
         }
@@ -161,6 +164,12 @@ public class PlayerController : MonoBehaviour
 
         UpdateEquipmentStats();
         Destroy(_selection.gameObject);
+    }
+
+    public void UseItem(Item item) {
+        if (item is Potions pot) {
+            usePotion(pot._healAmount);
+        }
     }
 
     public void AddKey() { 
@@ -181,7 +190,6 @@ public class PlayerController : MonoBehaviour
 
     #region Other functions
     private void UpdateEquipmentStats() {  // Call on Equip or Unequip
-
         // Animation Updates
         _standardIdleHash = _mainWeapon?._idle == null ? 
             Animator.StringToHash("Idle") : 
@@ -200,6 +208,11 @@ public class PlayerController : MonoBehaviour
             if (_equippedWeapon != null) Destroy(_equippedWeapon);
             _equippedWeapon = Instantiate(_mainWeapon?._weapon, _hand.position, _hand.rotation, _hand);
             _equippedWeapon.GetComponentInChildren<WeaponScript>().SetDamage(_mainWeapon._damage);
+        }
+
+        // Update stats
+        if (_equippedTalisman != null) {
+            maxHealthUpdate(_equippedTalisman._maxHealthChange);
         }
     }
 

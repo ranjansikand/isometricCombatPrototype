@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaca289271413ce409cbea2561d2072d, type: 3}
+  m_Name: HealthBoon
+  m_EditorClassIdentifier: 
+  _itemName: Boon of Vigor
+  _description: Grants a small bonus to max health
+  _icon: {fileID: 0}
+  _walkSpeedModifer: 1
+  _dodgeSpeedModifier: 1
+  _maxHealthChange: 10
+  _statChangeDescription: 

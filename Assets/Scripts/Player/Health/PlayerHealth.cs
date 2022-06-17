@@ -21,17 +21,29 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     void Awake() {
         _health = _maxHealth = _startingHealth;
+        PlayerController.maxHealthUpdate += UpdateMaxHealth;
+        PlayerController.usePotion += Recover;
     }
 
     public void Damage(int damage) {
         if (_dead || _recovering) return;
 
-        _health -= damage;
-        onHealthUpdate();
+        ChangeHealth(-1 * damage);
 
         // check if player died
         if (_health <= 0) Dead();
         else StartCoroutine(Recovery());
+    }
+
+    void Recover(int recovery) {
+        ChangeHealth(recovery);
+
+        // Play recovery effect
+    }
+
+    void ChangeHealth(int amount) {
+        _health = (int) Mathf.Clamp(_health + amount, 0, _maxHealth);
+        onHealthUpdate();
     }
 
     void Dead() {
@@ -41,15 +53,12 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     void UpdateMaxHealth(int changeAmount) {
         bool healthIsIncreasing = changeAmount > 0;
-        float currentHealthPercentage = _health / _maxHealth;
+        float currentHealthPercentage = (1.0f * _health) / (1.0f * _maxHealth);
 
         _maxHealth += changeAmount;
-
-        // update current health
-        if (healthIsIncreasing) {
-            // do not want to remove health if it's decreasing
-            _health = (int) (_maxHealth * currentHealthPercentage);
-        }
+        
+        _health = (int) Mathf.Clamp(_maxHealth * currentHealthPercentage, 0, _maxHealth);
+        
         if (_health > _maxHealth) {
             _health = _maxHealth;
         }
@@ -58,8 +67,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     }
 
     IEnumerator Recovery() {
-        _recovering = true;
-        yield return _recoveryTime;
+        _recovering = true; 
+        yield return _recoveryTime; 
         _recovering = false;
     }
 }
