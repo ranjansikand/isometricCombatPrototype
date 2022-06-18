@@ -19,7 +19,6 @@ public class ItemPopup : MonoBehaviour
     private bool _isDead;
 
     #region input action functions
-    private void OnEnable() { _playerInput.Enable(); }
     private void OnDisable() { _playerInput.Disable(); }
     
     private void OnPickup(InputAction.CallbackContext context) {
@@ -31,7 +30,7 @@ public class ItemPopup : MonoBehaviour
                     OpenMenu();
                     break;
                 case (true):
-                    EquipOrUseItem();
+                    _player.EquipSelection();
                     CloseMenu();
                     break;
             }
@@ -47,7 +46,7 @@ public class ItemPopup : MonoBehaviour
     #region clickable UI buttons
     public void EquipButtonClicked() {
         if (_isDead) return;
-        EquipOrUseItem();
+        _player.EquipSelection();
         CloseMenu();
     }
 
@@ -95,15 +94,6 @@ public class ItemPopup : MonoBehaviour
         // Call Event
         _player.MenuOpen = false;
     }
-
-    private void EquipOrUseItem() {
-        if (_item.IsEquippable()) {
-            _player.EquipSelection();
-        }
-        else {
-            Debug.Log("Add item to inventory");
-        }
-    }
     
 
     void Awake() {
@@ -117,5 +107,10 @@ public class ItemPopup : MonoBehaviour
         PlayerHealth.onDeath += OnDisable;
 
         _menuGUI.SetActive(false);
+    }
+
+    private void Start() {
+        _player = PlayerController.instance;
+        _playerInput.Enable();
     }
 }

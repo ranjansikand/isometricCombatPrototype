@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInput _playerInput;
     private CharacterController _characterController;
     private Animator _animator;
+    private PlayerInventory _inventory;
 
     // events
     public delegate void PlayerEvent(int value);
@@ -47,12 +48,14 @@ public class PlayerController : MonoBehaviour
     private bool _attacking = false;
     private bool _menuOpen = false;
 
-    // Scriptable Objects
+    // Inventory-based Scriptable Objects
     private Loot _selection;
     private Weapons _mainWeapon;
     private Talismans _equippedTalisman;
+    private Item _quickUseSlot;
 
     private int _numberOfKeys = 0;
+
     private GameObject _equippedWeapon = null;  // weapon currently in use
     [SerializeField] private Transform _hand;  // weapon spawnpoint
     [SerializeField] private LayerMask layerMask;  // layer for ray
@@ -66,6 +69,7 @@ public class PlayerController : MonoBehaviour
     public Loot Selection { get { return _selection; }}
     public Weapons MainWeapon { get { return _mainWeapon; }}
     public Talismans EquippedTalisman { get { return _equippedTalisman; }}
+    public Item QuickUseSlot { get { return _quickUseSlot; }}
 
     public Coroutine ComboResetRoutine { get { return _comboResetRoutine; } set { _comboResetRoutine = value; }}
 
@@ -92,9 +96,6 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region input and event callback functions
-    private void OnEnable() {
-        _playerInput.Enable();
-    }
 
     private void OnDisable() {
         _playerInput.Disable();
@@ -120,6 +121,12 @@ public class PlayerController : MonoBehaviour
             _attacking = true;
         }
     }
+    
+    private void OnUseItem(InputAction.CallbackContext context) {
+        if (_quickUseSlot is Potions pot) {
+            usePotion(pot._healAmount);
+        }
+    }
 
     private void OnDeath() {
         _states.SwitchState(_states.GetState(4));
@@ -135,6 +142,7 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Inventory-Based Functions
+    //  Functions that interface with the pickup menu
     public void DeselectItem() {
         _selection?.DeselectObject();
         _selection = null;
@@ -143,9 +151,20 @@ public class PlayerController : MonoBehaviour
     public void EquipSelection() {
         Item waste = null;
 
+        if (!_selection.Item.IsEquippable()) {
+            if (_inventory.AddItem(_selection.Item)) {
+                Destroy(_selection.gameObject);
+            }
+            else {
+                Debug.Log("Unable to add to inventory");
+            }
+            return;
+        }
+
         if (_selection.Item is Weapons wep) {
             waste = _mainWeapon;
             _mainWeapon = wep;
+            _inventory.AddWeapon(wep);
         }
         else if (_selection.Item is Talismans tal) {
             if (_equippedTalisman != null) 
@@ -166,10 +185,14 @@ public class PlayerController : MonoBehaviour
         Destroy(_selection.gameObject);
     }
 
-    public void UseItem(Item item) {
-        if (item is Potions pot) {
-            usePotion(pot._healAmount);
-        }
+    // Functions that interface with inventory
+    public void SwitchWeapon(Weapons weapon) {
+        _mainWeapon = weapon;
+        UpdateEquipmentStats();
+    }
+
+    public void SwitchItem(Item item) {
+        _quickUseSlot = item;
     }
 
     public void AddKey() { 
@@ -209,6 +232,9 @@ public class PlayerController : MonoBehaviour
             _equippedWeapon = Instantiate(_mainWeapon?._weapon, _hand.position, _hand.rotation, _hand);
             _equippedWeapon.GetComponentInChildren<WeaponScript>().SetDamage(_mainWeapon._damage);
         }
+        if (_mainWeapon == null) {
+            if (_equippedWeapon != null) Destroy(_equippedWeapon);
+        }
 
         // Update stats
         if (_equippedTalisman != null) {
@@ -226,18 +252,24 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    void Awake()
-    {
+    // Runs first
+    private void Awake() {
         if (instance != null) {
             Debug.LogWarning("Multiple players found!");
             return;
         }
         instance = this;
 
-        _playerInput = new PlayerInput();
+        _playerInput = new PlayerInput();    
+    }
+
+    // Runs after Awake
+    private void OnEnable()
+    {
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
         _states = new PlayerStateFactory(this);
+        _inventory = PlayerInventory.instance;
 
         _states.GenerateStates();
         _states.SwitchState(_states.GetState(0));
@@ -250,10 +282,12 @@ public class PlayerController : MonoBehaviour
         _playerInput.Player.Movement.canceled += OnMovementInput;
         _playerInput.Player.Dodge.performed += OnDodge;
         _playerInput.Player.Attack.performed += OnAttack;
+        _playerInput.Player.UseItem.performed += OnUseItem;
 
         ActionState.onAnimationComplete += EndAction;
         PlayerHealth.onDeath += OnDeath;
         PlayerHealth.onDeath += OnDisable;
+        _playerInput.Enable();
     }
 
     void Update()
