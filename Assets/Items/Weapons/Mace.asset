@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemName: Mace
   _description: A simple blunt mace with slow, heavy attacks.
-  _damage: 2
+  _icon: {fileID: 0}
+  _damage: 7
   _attack1: {fileID: 7400000, guid: 89f02ad935fa4164890b9f80c397aaa9, type: 2}
   _attack2: {fileID: 7400000, guid: d0645c4c2c3bbd54d994c07ae60f496f, type: 2}
   _finisher: {fileID: 7400000, guid: 8e374239f80ea6b4bb9c53a7b7f59e36, type: 2}

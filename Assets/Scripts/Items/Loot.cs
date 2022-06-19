@@ -11,7 +11,7 @@ public class Loot : MonoBehaviour
     public GameObject _selectedHighlight;
     public Item Item { get { return _item; } set { _item = value; }}
 
-    WaitForSeconds _delay = new WaitForSeconds(60);
+    static WaitForSeconds _delay = new WaitForSeconds(60);
 
 
 // Functioning functions

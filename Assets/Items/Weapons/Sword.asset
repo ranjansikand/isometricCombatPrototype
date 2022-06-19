@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemName: Sword
   _description: A simple shortsword with quick attacks and moderate reach.
-  _damage: 1
+  _icon: {fileID: 0}
+  _damage: 5
   _attack1: {fileID: 7400000, guid: 7bfa3eee3dadd90409b536d736907429, type: 2}
   _attack2: {fileID: 7400000, guid: cdf4968b112984540b7548086be53319, type: 2}
   _finisher: {fileID: 7400000, guid: 53f5b6e61cf57e342ae9d1b894a3fd7a, type: 2}

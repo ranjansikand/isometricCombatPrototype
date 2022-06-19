@@ -36,11 +36,27 @@ public class SimpleEnemy : MonoBehaviour, IDamageable {
     } 
 
     public void Damage(int amount) {
-        _health -= amount;
-        if (_health <= 0) {
-            _dead = true;
-            _animator.Play(_deathHash);
+        if (!_dead && _health >= 0) {
+            _health -= amount;
+            
+            if (_health <= 0) {
+                Dead();
+            }
         }
+    }
+
+    void Dead() {
+        _dead = true;
+        _agent.enabled = false;
+
+        _animator.Play(_deathHash);
+        ItemGenerator.instance.SpawnGold(transform.position, Random.Range(1, 10));
+
+        Invoke(nameof(DestroyThis), 2.5f);
+    }
+
+    void DestroyThis() {
+        Destroy(gameObject);
     }
 
     IEnumerator TargetNotFound() {
@@ -69,7 +85,7 @@ public class SimpleEnemy : MonoBehaviour, IDamageable {
     }
 
     void Update() {
-        if (_targetInRange) {
+        if (!_dead && _targetInRange) {
             Vector3 direction = (_target.position - transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
             transform.rotation = lookRotation;

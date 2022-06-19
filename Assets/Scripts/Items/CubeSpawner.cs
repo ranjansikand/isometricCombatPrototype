@@ -7,5 +7,6 @@ public class CubeSpawner : MonoBehaviour
 
     void Start() {
         ItemGenerator.instance.SpawnObject(transform.position, weapon);
+        ItemGenerator.instance.SpawnGold(transform.position, 10);
     }
 }

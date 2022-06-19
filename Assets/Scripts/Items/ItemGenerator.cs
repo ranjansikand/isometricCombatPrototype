@@ -15,9 +15,10 @@ public class ItemGenerator : MonoBehaviour
         instance = this;
     }
     #endregion
-
-    [SerializeField] List<Item> _allItems = new List<Item>();
     [SerializeField] GameObject _itemPrefab;
+    [SerializeField] GameObject _goldPrefab;
+    [SerializeField] List<Item> _allItems = new List<Item>();
+    
 
     #region private functions
 
@@ -34,5 +35,11 @@ public class ItemGenerator : MonoBehaviour
         GameObject newItem = Instantiate(_itemPrefab, location + Vector3.up, Quaternion.identity);
         newItem.GetComponent<Loot>().Item = item;
         return newItem;
+    }
+
+    public GameObject SpawnGold(Vector3 location, int goldValue = 5) {
+        GameObject newGold = Instantiate(_goldPrefab, location + Vector3.up, Quaternion.identity);
+        newGold.GetComponent<Money>().SetValue(goldValue);
+        return newGold;
     }
 }
