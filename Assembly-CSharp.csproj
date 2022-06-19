@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\Player\States\PlayerDeathState.cs" />
      <Compile Include="Assets\Scripts\Enemy\Behavior\PatrolSleep.cs" />
      <Compile Include="Assets\Scripts\Items\Potions.cs" />
+     <Compile Include="Assets\Scripts\Enemy\SimpleEnemy.cs" />
      <Compile Include="Assets\Scripts\Combat\WeaponScript.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyManager.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyCombatState.cs" />
@@ -75,6 +76,7 @@
      <Compile Include="Assets\Scripts\Player\States\PlayerBaseState.cs" />
      <Compile Include="Assets\Input\PlayerInput.cs" />
      <Compile Include="Assets\Scripts\Items\Weapons.cs" />
+     <Compile Include="Assets\Scripts\Player\Health\PlayerInventory.cs" />
      <Compile Include="Assets\Scripts\Items\CubeSpawner.cs" />
      <Compile Include="Assets\Scripts\Enemy\Behavior\Patrol.cs" />
      <Compile Include="Assets\Scripts\Player\Health\PlayerHealth.cs" />
@@ -83,7 +85,7 @@
      <Compile Include="Assets\Scripts\Items\Talismans.cs" />
      <Compile Include="Assets\Scripts\Enemy\Behavior\EnemyData.cs" />
      <Compile Include="Assets\Scripts\Combat\EnemyWeapon.cs" />
-     <Compile Include="Assets\Scripts\Player\Health\PlayerInventory.cs" />
+     <Compile Include="Assets\Scripts\Combat\SimpleWeapon.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
