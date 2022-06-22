@@ -42,4 +42,20 @@ public class ItemGenerator : MonoBehaviour
         newGold.GetComponent<Money>().SetValue(goldValue);
         return newGold;
     }
+
+    public void PopOutObject (Vector3 location, Item item = null) {
+        GameObject obj = SpawnObject(location, item);
+        obj.GetComponent<Rigidbody>().AddForce(
+                Random.Range(-3f, 3f), 2f, 
+                Random.Range(-3f, 3f), 
+                ForceMode.Impulse);
+    }
+
+    public void PopOutGold (Vector3 location, int value = 5) {
+        GameObject obj = SpawnGold(location, value);
+        obj.GetComponent<Rigidbody>().AddForce(
+                Random.Range(-3f, 3f), 2f, 
+                Random.Range(-3f, 3f), 
+                ForceMode.Impulse);
+    }
 }

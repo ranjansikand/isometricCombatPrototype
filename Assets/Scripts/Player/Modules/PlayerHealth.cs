@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
@@ -22,13 +21,15 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     void Awake() {
         _health = _maxHealth = _startingHealth;
         PlayerController.maxHealthUpdate += UpdateMaxHealth;
-        PlayerController.usePotion += Recover;
+        PlayerInventory.usePotion += Recover;
     }
 
     public void Damage(int damage) {
         if (_dead || _recovering) return;
 
         ChangeHealth(-1 * damage);
+        CameraManager.GenerateImpulse();
+        PlayerController.instance.Animator.Play("Hurt");
 
         // check if player died
         if (_health <= 0) Dead();

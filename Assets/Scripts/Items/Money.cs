@@ -10,20 +10,37 @@ public class Money : MonoBehaviour
     Transform _destination;
     bool _destroying = false, _hasDestination = false;
 
-    static WaitForSeconds _delay = new WaitForSeconds(60);
+    static WaitForSeconds _destroyDelay = new WaitForSeconds(60);
+    static WaitForSeconds _moveDelay = new WaitForSeconds(1f);
     static float _speed = 4.0f;
 
+
+    // Helper functions
+    
     public void SetValue(int value) {
         _goldAmount = value;
     }
     IEnumerator DestroyOnTimeout() {
-        yield return _delay;
-        DestroyThis();
+        yield return _destroyDelay;
+
+        if (!_hasDestination) {
+            DestroyThis();
+        }
     }
 
     void DestroyThis() {
         Destroy(gameObject);
     }
+
+    IEnumerator GoToPlayer(Transform other) {
+        yield return _moveDelay;
+
+        _destination = other;
+        _hasDestination = true;
+    }
+
+
+    // Unity Functions
 
     void Awake()
     {
@@ -33,8 +50,7 @@ public class Money : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         // Check if player detected
         if (other.gameObject.layer == 11) {
-            _destination = other.transform;
-            _hasDestination = true;
+            StartCoroutine(GoToPlayer(other.transform));
         }
     }
 

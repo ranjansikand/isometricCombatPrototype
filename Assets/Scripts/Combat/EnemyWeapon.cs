@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-public class EnemyWeapon : SimpleWeapon
+public class EnemyWeapon : Weapon
 {
     EnemyBase _activeState;
 

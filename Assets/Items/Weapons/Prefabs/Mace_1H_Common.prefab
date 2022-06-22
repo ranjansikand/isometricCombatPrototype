@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4179955793876552395}
   - component: {fileID: 985712383292212590}
   - component: {fileID: 3046970442239111588}
-  - component: {fileID: 8332216344400273327}
   - component: {fileID: 4623683153778748648}
+  - component: {fileID: 3387636205448548821}
   m_Layer: 12
   m_Name: Mace1H_Basic
   m_TagString: Untagged
@@ -83,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8332216344400273327
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3551650197231194225}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.34, z: 0.3}
-  m_Center: {x: 0, y: 0.41, z: 0}
 --- !u!114 &4623683153778748648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +95,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8e9409150ab02409ef5d62b1ea8b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
+  topParent: {fileID: 0}
+--- !u!135 &3387636205448548821
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3551650197231194225}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.13
+  m_Center: {x: 0, y: 0.425, z: 0}
 --- !u!1 &4483934938096805957
 GameObject:
   m_ObjectHideFlags: 0

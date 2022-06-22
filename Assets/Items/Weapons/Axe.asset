@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemName: Axe
   _description: A simple axe with slow, heavy attacks.
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: b3379dfbd47568344bccd644c3bdf8ee, type: 3}
   _damage: 8
+  _knockback: 2.5
   _attack1: {fileID: 7400000, guid: 6ab9a201498e82f458378947242a23bb, type: 2}
   _attack2: {fileID: 7400000, guid: ca076a6057c58a24c8f09c7fce65b356, type: 2}
   _finisher: {fileID: 7400000, guid: 15abb682365e42842ab5b2abd5cfd4e2, type: 2}

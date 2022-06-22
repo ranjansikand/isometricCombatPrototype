@@ -11,13 +11,17 @@ public class PlayerInventory : MonoBehaviour
     public static PlayerInventory instance;
     private PlayerInput _playerInput;
     private PlayerController _player;
+
+    public delegate void InventoryEvent (int value);
+    public static InventoryEvent usePotion;
     
-    private Item[] _inventory = new Item[5];
+    private List<Item> _inventory = new List<Item>();
     private Weapons[] _weapons = new Weapons[2];
+
+    private const int _max_inventory_size = 5;
 
     private int _inventoryIndex = 0;
     private int _weaponIndex = 0;
-
     private int _gold = 0;
 
     private bool _canSwitchWeapon = true;
@@ -38,6 +42,8 @@ public class PlayerInventory : MonoBehaviour
     private void Start() {
         _player = PlayerController.instance;
         _playerInput.Enable();
+
+        _inventory.Capacity = _max_inventory_size;
     }
 
     private void OnDisable() {
@@ -68,20 +74,20 @@ public class PlayerInventory : MonoBehaviour
     }
 
     public bool AddItem(Item item) {
-        for (int i = 0; i < _inventory.Length; i++) {
-            if (_inventory[i] == null) {
-                _inventory[i] = item;
+        if (_inventory.Count < _max_inventory_size) {
+            _inventory.Add(item);
 
-                if (_player.QuickUseSlot == null || 
+            if (_player.QuickUseSlot == null || 
                     _player.QuickUseSlot != _inventory[_inventoryIndex]) 
-                {
-                    _inventoryIndex = i;
-                    _player.SwitchItem(_inventory[i]);
-                }
-                Debug.Log("Successfully added " + item.ItemName + " to inventory.");
-               return true;
+            {
+                _inventoryIndex = _inventory.IndexOf(item);
+                _player.SwitchItem(item);
             }
+
+            Debug.Log("Successfully added " + item.ItemName + " to inventory.");
+            return true;
         }
+        
 
         Debug.Log("Inventory is full!");
         return false;
@@ -101,6 +107,48 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    private void GetNextItemIndex() {
+        if (_inventory.Count > 1) {
+            if (_inventory[_inventoryIndex+1] != null) {
+                _inventoryIndex+=1;
+            }
+        } else {
+            _inventoryIndex = 0;
+        }
+    }
+
+    public bool CanAfford(int amount) {
+        return (_gold - amount) > 0;
+    }
+    #endregion
+
+    #region Using and Removing Items
+    public void QuickUse(Item item) {
+        if (_inventory.Contains(item)){
+            if (item is Potions pot) {
+                usePotion(pot._healAmount);
+            }
+
+            RemoveItem(item);
+            GetNextItemIndex();
+            if (_inventory.Count > 0) {
+                _player.SwitchItem(_inventory[_inventoryIndex]);
+            } else {
+                _player.ClearItem();
+            }
+        }
+    }
+
+    public void RemoveItem (Item item) {
+        _inventory.Remove(item);
+    }
+
+    public void UseGold(int amount) {
+        if (_gold >= amount) {
+            _gold -= amount;
+        }
+    }
+
     // Prevent abusing the switch weapon button
     IEnumerator RecoverFromWeaponSwitch() {
         _canSwitchWeapon = false;
@@ -108,15 +156,6 @@ public class PlayerInventory : MonoBehaviour
         _canSwitchWeapon = true;
     }
 
-    public bool CanAfford(int amount) {
-        return (_gold - amount) > 0;
-    }
-
-    public void UseGold(int amount) {
-        if ((_gold - amount) > 0) {
-            _gold -= amount;
-        }
-    }
     #endregion
 
     // Update is called once per frame

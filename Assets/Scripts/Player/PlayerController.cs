@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     public delegate void PlayerEvent(int value);
     public static PlayerEvent keyCount;
     public static PlayerEvent maxHealthUpdate;
-    public static PlayerEvent usePotion;
 
     // State Machine
     private PlayerBaseState _currentState;
@@ -37,10 +36,12 @@ public class PlayerController : MonoBehaviour
 
     // Animations
     private int _standardIdleHash;
+    private int _standardHurtHash;
     private int _standardRunHash;
     private int _standardDodgeHash;
     private int _standardAttackHash;
     private int _attack1, _attack2, _finisher;
+    private int _dirX, _dirY;
 
     // Conditions
     private bool _needToSwitchToIdle = false;
@@ -123,13 +124,17 @@ public class PlayerController : MonoBehaviour
     }
     
     private void OnUseItem(InputAction.CallbackContext context) {
-        if (_quickUseSlot is Potions pot) {
-            usePotion(pot._healAmount);
-        }
+        PlayerInventory.instance.QuickUse(_quickUseSlot);
     }
 
     private void OnDeath() {
         _states.SwitchState(_states.GetState(4));
+    }
+
+    public void OnHurt() {
+        if (!_lockedIntoState) {
+            _animator.Play("Hurt");
+        }
     }
 
     private void EndAction() {
@@ -173,13 +178,7 @@ public class PlayerController : MonoBehaviour
             _equippedTalisman = tal;
         }
 
-        if (waste != null) {
-            GameObject buffer = ItemGenerator.instance.SpawnObject(transform.position, waste);
-            buffer.GetComponent<Rigidbody>().AddForce(
-                Random.Range(-3f, 3f), 2f, 
-                Random.Range(-3f, 3f), 
-                ForceMode.Impulse);
-        }
+        if (waste != null) ItemGenerator.instance.PopOutObject(transform.position, waste);
 
         UpdateEquipmentStats();
         Destroy(_selection.gameObject);
@@ -191,9 +190,9 @@ public class PlayerController : MonoBehaviour
         UpdateEquipmentStats();
     }
 
-    public void SwitchItem(Item item) {
-        _quickUseSlot = item;
-    }
+    public void SwitchItem(Item item = null) { _quickUseSlot = item; }
+
+    public void ClearItem () { _quickUseSlot = null; }
 
     public void AddKey() { 
         _numberOfKeys++; 
@@ -229,12 +228,15 @@ public class PlayerController : MonoBehaviour
         // Visual equipment update
         if (_mainWeapon?._weapon != null) {
             if (_equippedWeapon != null) Destroy(_equippedWeapon);
+
             _equippedWeapon = Instantiate(_mainWeapon?._weapon, _hand.position, _hand.rotation, _hand);
-            _equippedWeapon.GetComponentInChildren<WeaponScript>().SetDamage(_mainWeapon._damage);
+            
+            var wep = _equippedWeapon.GetComponentInChildren<PlayerWeapon>();
+            wep.SetDamage(_mainWeapon._damage);
+            wep.SetKnockback(_mainWeapon._knockback);
         }
-        if (_mainWeapon == null) {
-            if (_equippedWeapon != null) Destroy(_equippedWeapon);
-        }
+
+        if (_mainWeapon == null && _equippedWeapon != null) Destroy(_equippedWeapon);
 
         // Update stats
         if (_equippedTalisman != null) {
@@ -276,6 +278,9 @@ public class PlayerController : MonoBehaviour
 
         _standardDodgeHash = Animator.StringToHash("Dodge");
         _standardAttackHash = Animator.StringToHash("Hit");
+        _standardHurtHash = Animator.StringToHash("Hurt");
+        _dirX = Animator.StringToHash("dirX");
+        _dirY = Animator.StringToHash("dirY");
         UpdateEquipmentStats();
 
         _playerInput.Player.Movement.performed += OnMovementInput;
@@ -308,6 +313,12 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.layer == 10) {
             AddKey();
             Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.layer == 8) {
+            var dir = (transform.position - other.gameObject.transform.position).normalized;
+            _animator.SetFloat(_dirX, dir.x);
+            _animator.SetFloat(_dirY, dir.z);
         }
     }
 

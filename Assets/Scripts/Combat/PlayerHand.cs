@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-public class PlayerHand : WeaponScript
+public class PlayerHand : Weapon
 {
     void Start()
     {

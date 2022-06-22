@@ -3,7 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Weapon", menuName = "Items/Weapon", order = 1)]
 public class Weapons : Item
 {
-    public int _damage;
+    public int _damage = 5;
+    [Range(0f, 4f)] public float _knockback = 2f;
     public AnimationClip _attack1, _attack2;
     public AnimationClip _finisher;
     public AnimationClip _idle, _run;
