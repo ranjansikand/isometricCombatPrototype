@@ -55,7 +55,7 @@ public class Money : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
-        if (other.gameObject.layer == 11) {
+        if (other.gameObject.layer == 11 && !_destroying) {
             _destroying = true;
             PlayerInventory.instance.AddGold(_goldAmount);
             Invoke(nameof(DestroyThis), 0.05f);

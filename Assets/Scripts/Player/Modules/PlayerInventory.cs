@@ -13,7 +13,8 @@ public class PlayerInventory : MonoBehaviour
     private PlayerController _player;
 
     public delegate void InventoryEvent (int value);
-    public static InventoryEvent usePotion;
+    public static InventoryEvent useSimplePotion;
+    public static InventoryEvent useScalingPotion;
     
     private List<Item> _inventory = new List<Item>();
     private Weapons[] _weapons = new Weapons[2];
@@ -126,7 +127,10 @@ public class PlayerInventory : MonoBehaviour
     public void QuickUse(Item item) {
         if (_inventory.Contains(item)){
             if (item is Potions pot) {
-                usePotion(pot._healAmount);
+                useSimplePotion(pot._healAmount);
+            }
+            else if (item is PotionsScaled potS) {
+                useScalingPotion(potS.healPercentage);
             }
 
             RemoveItem(item);

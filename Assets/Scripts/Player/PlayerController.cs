@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _appliedMovement;
 
     // Attacking
+    public int _baseDamage;
     private Coroutine _comboResetRoutine = null;
     private int _attackNumber = 1;
     private WaitForSeconds _comboResetTimer = new WaitForSeconds(1.5f);
@@ -96,7 +97,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 AppliedMovement { get { return _appliedMovement; } set { _appliedMovement = value; }}
     #endregion
 
-    #region input and event callback functions
+    #region input functions
 
     private void OnDisable() {
         _playerInput.Disable();
@@ -136,13 +137,19 @@ public class PlayerController : MonoBehaviour
             _animator.Play("Hurt");
         }
     }
+    #endregion
 
+    #region Event functions
     private void EndAction() {
         _lockedIntoState = false;
         _attacking = false;
 
         if (_currentMovementInput == Vector2.zero) _states.SwitchState(_states.GetState(3));
         else _states.SwitchState(_states.GetState(0));
+    }
+
+    private void UpdateBaseDamage(int might) {
+        _baseDamage = might;
     }
     #endregion
 
@@ -232,7 +239,7 @@ public class PlayerController : MonoBehaviour
             _equippedWeapon = Instantiate(_mainWeapon?._weapon, _hand.position, _hand.rotation, _hand);
             
             var wep = _equippedWeapon.GetComponentInChildren<PlayerWeapon>();
-            wep.SetDamage(_mainWeapon._damage);
+            wep.SetDamage(_mainWeapon._damage + _baseDamage);
             wep.SetKnockback(_mainWeapon._knockback);
         }
 

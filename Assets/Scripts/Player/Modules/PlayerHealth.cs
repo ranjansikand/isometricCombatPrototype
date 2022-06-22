@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
-    private static int _startingHealth = 100;
-    private int _maxHealth;
+    private const int _startingHealth = 100;
+    private int _maxHealth, _baseMaxHealth;
     private int _health;
 
     private WaitForSeconds _recoveryTime = new WaitForSeconds(0.75f);
@@ -19,9 +19,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public static HealthEvent onHealthUpdate;
 
     void Awake() {
-        _health = _maxHealth = _startingHealth;
+        _health = _maxHealth = _baseMaxHealth = _startingHealth;
         PlayerController.maxHealthUpdate += UpdateMaxHealth;
-        PlayerInventory.usePotion += Recover;
+        PlayerStats.vitalityIncrease += UpdateBaseHealth;
+        PlayerInventory.useSimplePotion += Recover;
+        PlayerInventory.useScalingPotion += RecoverByPercentage;
     }
 
     public void Damage(int damage) {
@@ -29,7 +31,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
         ChangeHealth(-1 * damage);
         CameraManager.GenerateImpulse();
-        PlayerController.instance.Animator.Play("Hurt");
+        PlayerController.instance.OnHurt();
 
         // check if player died
         if (_health <= 0) Dead();
@@ -42,6 +44,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         // Play recovery effect
     }
 
+    void RecoverByPercentage(int percentage) {
+        var amount = (int) 1.0f * percentage * _maxHealth;
+        ChangeHealth(amount); 
+    }
+
     void ChangeHealth(int amount) {
         _health = (int) Mathf.Clamp(_health + amount, 0, _maxHealth);
         onHealthUpdate();
@@ -52,18 +59,17 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         onDeath();
     }
 
+    void UpdateBaseHealth(int vitality) {
+        int diff = _maxHealth - _baseMaxHealth;
+        float temp = (1 + ((2.5f * vitality) / 100f)) * _startingHealth;
+
+        _baseMaxHealth = (int) temp;
+        UpdateMaxHealth(diff);
+    }
+
     void UpdateMaxHealth(int changeAmount) {
-        bool healthIsIncreasing = changeAmount > 0;
-        float currentHealthPercentage = (1.0f * _health) / (1.0f * _maxHealth);
-
-        _maxHealth += changeAmount;
-        
-        _health = (int) Mathf.Clamp(_maxHealth * currentHealthPercentage, 0, _maxHealth);
-        
-        if (_health > _maxHealth) {
-            _health = _maxHealth;
-        }
-
+        _maxHealth = _baseMaxHealth + changeAmount;
+        Debug.Log(_maxHealth);
         onHealthUpdate();
     }
 

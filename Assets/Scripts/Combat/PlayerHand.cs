@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class PlayerHand : Weapon
 {
-    void Start()
-    {
-        base.SetDamage(1);
-    }
-
     public override void OnTriggerEnter(Collider other) {
         if (PlayerController.instance.MainWeapon == null) {
+            base.SetDamage(1 + PlayerController.instance._baseDamage);
             base.OnTriggerEnter(other);
         }
     }
