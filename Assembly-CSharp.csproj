@@ -36,6 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\UI\InventorySlot.cs" />
      <Compile Include="Assets\Scripts\Player\States\PlayerDodgeState.cs" />
      <Compile Include="Assets\Scripts\UI\Healthbar.cs" />
      <Compile Include="Assets\Scripts\Combat\Dummy.cs" />
@@ -44,13 +45,14 @@
      <Compile Include="Assets\Scripts\Enemy\Behavior\PatrolCircle.cs" />
      <Compile Include="Assets\Scripts\Combat\DamageCalculator.cs" />
      <Compile Include="Assets\Scripts\Player\States\PlayerIdleState.cs" />
-     <Compile Include="Assets\Scripts\Items\ItemGenerator.cs" />
+     <Compile Include="Assets\Scripts\Inventory\ItemGenerator.cs" />
      <Compile Include="Assets\Scripts\Player\States\PlayerWalkState.cs" />
      <Compile Include="Assets\Scripts\Combat\Weapon.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyBase.cs" />
-     <Compile Include="Assets\Scripts\Items\Key.cs" />
-     <Compile Include="Assets\Scripts\Items\Item.cs" />
-     <Compile Include="Assets\Scripts\Items\Chest.cs" />
+     <Compile Include="Assets\Scripts\Inventory\Key.cs" />
+     <Compile Include="Assets\Scripts\Inventory\Items\Item.cs" />
+     <Compile Include="Assets\Scripts\Inventory\Chest.cs" />
+     <Compile Include="Assets\Scripts\UI\InventoryUI.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Enemy\Behavior\Attack.cs" />
      <Compile Include="Assets\Scripts\Enemy\Behavior\AttackMelee.cs" />
@@ -59,8 +61,8 @@
      <Compile Include="Assets\Scripts\Enemy\Behavior\PatrolNone.cs" />
      <Compile Include="Assets\Scripts\Player\States\PlayerDeathState.cs" />
      <Compile Include="Assets\Scripts\Enemy\Behavior\PatrolSleep.cs" />
-     <Compile Include="Assets\Scripts\Items\Potions.cs" />
-     <Compile Include="Assets\Scripts\Items\Money.cs" />
+     <Compile Include="Assets\Scripts\Inventory\Items\Potions.cs" />
+     <Compile Include="Assets\Scripts\Inventory\Items\Money.cs" />
      <Compile Include="Assets\Scripts\Enemy\SimpleEnemy\SimpleEnemy.cs" />
      <Compile Include="Assets\Scripts\Combat\PlayerWeapon.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyManager.cs" />
@@ -71,25 +73,25 @@
      <Compile Include="Assets\Scripts\Enemy\EnemyAttack2State.cs" />
      <Compile Include="Assets\Scripts\Combat\CameraManager.cs" />
      <Compile Include="Assets\Scripts\Enemy\Behavior\Combat.cs" />
-     <Compile Include="Assets\Scripts\Items\Rotation.cs" />
+     <Compile Include="Assets\Scripts\Inventory\Rotation.cs" />
+     <Compile Include="Assets\Scripts\Inventory\Items\PotionsScaled.cs" />
      <Compile Include="Assets\Scripts\Player\States\PlayerStateFactory.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyAttack1State.cs" />
      <Compile Include="Assets\Scripts\UI\ItemPopup.cs" />
      <Compile Include="Assets\Scripts\UI\KeyCount.cs" />
-     <Compile Include="Assets\Scripts\Items\Loot.cs" />
+     <Compile Include="Assets\Scripts\Inventory\Items\Loot.cs" />
      <Compile Include="Assets\Scripts\Player\States\PlayerBaseState.cs" />
      <Compile Include="Assets\Input\PlayerInput.cs" />
-     <Compile Include="Assets\Scripts\Items\Weapons.cs" />
+     <Compile Include="Assets\Scripts\Inventory\Items\Weapons.cs" />
      <Compile Include="Assets\Scripts\Player\Modules\PlayerInventory.cs" />
-     <Compile Include="Assets\Scripts\Items\CubeSpawner.cs" />
+     <Compile Include="Assets\Scripts\Inventory\CubeSpawner.cs" />
      <Compile Include="Assets\Scripts\Enemy\Behavior\Patrol.cs" />
      <Compile Include="Assets\Scripts\Player\Modules\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\Combat\PlayerHand.cs" />
      <Compile Include="Assets\Scripts\Player\ActionState.cs" />
-     <Compile Include="Assets\Scripts\Items\Talismans.cs" />
+     <Compile Include="Assets\Scripts\Inventory\Items\Talismans.cs" />
      <Compile Include="Assets\Scripts\Enemy\Behavior\EnemyData.cs" />
      <Compile Include="Assets\Scripts\Combat\EnemyWeapon.cs" />
-     <Compile Include="Assets\Scripts\Items\PotionsScaled.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

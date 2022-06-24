@@ -11,6 +11,7 @@ public class PlayerInventory : MonoBehaviour
     public static PlayerInventory instance;
     private PlayerInput _playerInput;
     private PlayerController _player;
+    [SerializeField] private InventoryUI _inventoryUI;
 
     public delegate void InventoryEvent (int value);
     public static InventoryEvent useSimplePotion;
@@ -28,6 +29,9 @@ public class PlayerInventory : MonoBehaviour
     private bool _canSwitchWeapon = true;
     private WaitForSeconds _delay = new WaitForSeconds(1f);
 
+    public int MaxSize { get { return _max_inventory_size; }}
+    public bool Paused { get { return _inventoryUI.gameObject.activeSelf; }}
+
     void Awake()
     {
         instance = this;
@@ -36,6 +40,7 @@ public class PlayerInventory : MonoBehaviour
         _playerInput.Player.ScrollLeft.performed += OnScrollLeft;
         _playerInput.Player.ScrollRight.performed += OnScrollRight;
         _playerInput.Player.SwitchWeapon.performed += OnSwitchWeapon;
+        _playerInput.Player.Menu.performed += OnMenu;
 
         PlayerHealth.onDeath += OnDisable;
     }
@@ -53,18 +58,46 @@ public class PlayerInventory : MonoBehaviour
 
     #region Input functions
     private void OnScrollLeft(InputAction.CallbackContext context) {
-        AccessInventory(Mathf.Max(0, _inventoryIndex - 1));
+        if (!Paused) AccessInventory(Mathf.Max(0, _inventoryIndex - 1));
     }
 
     private void OnScrollRight(InputAction.CallbackContext context) {
-        AccessInventory(Mathf.Min(_inventoryIndex + 1, 5));
+        if (!Paused) AccessInventory(Mathf.Min(_inventoryIndex + 1, _max_inventory_size));
     }
 
     private void OnSwitchWeapon(InputAction.CallbackContext context) {
-        if (_canSwitchWeapon && !_player.IsAttacking) {
+        if (!Paused && _canSwitchWeapon && !_player.IsAttacking) {
             _weaponIndex = Mathf.Abs(_weaponIndex - 1);
             _player.SwitchWeapon(_weapons[_weaponIndex]);
             StartCoroutine(RecoverFromWeaponSwitch());
+        }
+    }
+
+    private void OnMenu(InputAction.CallbackContext context) {
+        switch (_inventoryUI.gameObject.activeSelf) {
+            case (true):  // menu is open
+                _inventoryUI.HideMenu();
+                _inventoryUI.gameObject.SetActive(false);
+                break;
+            case (false):  // menu is closed 
+                _inventoryUI.gameObject.SetActive(true);
+                _inventoryUI.ShowMenu();
+                break;
+        }
+    }
+
+    private void OnUse() {
+        if (Paused) {
+            QuickUse(_inventoryUI.Selected);
+            _inventoryUI.UpdateSlots(_inventoryUI.Selected);
+        }
+    }
+
+    private void OnDrop() {
+        if (Paused) { 
+            RemoveItem(_inventoryUI.Selected);
+            ItemGenerator.instance.PopOutObject(_player.transform.position, _inventoryUI.Selected);
+            _inventoryUI.UpdateSlots(_inventoryUI.Selected);
         }
     }
     #endregion
@@ -102,10 +135,8 @@ public class PlayerInventory : MonoBehaviour
 
     #region Getting Objects
     private void AccessInventory(int indexToAccess) {
-        if (_inventory[indexToAccess] != null) {
-            _inventoryIndex = indexToAccess;
-            _player.SwitchItem(_inventory[_inventoryIndex]);
-        }
+        _inventoryIndex = indexToAccess % _inventory.Count;
+        _player.SwitchItem(_inventory[_inventoryIndex]);
     }
 
     private void GetNextItemIndex() {
@@ -125,6 +156,7 @@ public class PlayerInventory : MonoBehaviour
 
     #region Using and Removing Items
     public void QuickUse(Item item) {
+        Debug.Log("Using " + item);
         if (_inventory.Contains(item)){
             if (item is Potions pot) {
                 useSimplePotion(pot._healAmount);
@@ -151,6 +183,11 @@ public class PlayerInventory : MonoBehaviour
         if (_gold >= amount) {
             _gold -= amount;
         }
+    }
+
+    public Item GetItemInSlot(int index) {
+        if (index > _inventory.Count - 1 || _inventory[index] == null) return null;
+        else return _inventory[index];
     }
 
     // Prevent abusing the switch weapon button

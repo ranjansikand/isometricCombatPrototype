@@ -15,11 +15,11 @@ C:/Users/ranja/Desktop/Unity Projects/isometricDungeonPrototype
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-57353
+59348
 Successfully changed project path to: C:/Users/ranja/Desktop/Unity Projects/isometricDungeonPrototype
 C:/Users/ranja/Desktop/Unity Projects/isometricDungeonPrototype
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 71.55 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 34.38 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.1f1 (77a89f25062f)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.1f1/Editor/Data/Resources/UnitySubsystems
@@ -35,268 +35,1284 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.1f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.1f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.1f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56692
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56216
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.1f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.1f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.005356 seconds.
+Registered in 0.002971 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 57.87 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 36.69 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.442 seconds
+- Completed reload, in  1.257 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.002540 seconds.
+Registered in 0.000915 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 65.44 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 39.74 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.953 seconds
+- Completed reload, in  0.974 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.12 seconds
-Refreshing native plugins compatible for Editor in 0.71 ms, found 0 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 0.42 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1686 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 78.0 MB.
+Unloading 1689 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 78.1 MB.
 System memory in use after: 78.1 MB.
 
-Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2131.
-Total: 5.029800 ms (FindLiveObjects: 0.608900 ms CreateObjectMapping: 0.183600 ms MarkObjects: 4.024800 ms  DeleteObjects: 0.209800 ms)
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 2134.
+Total: 3.532800 ms (FindLiveObjects: 0.966300 ms CreateObjectMapping: 0.258300 ms MarkObjects: 2.211000 ms  DeleteObjects: 0.094500 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Items/Potions/SmallPot.asset
-  artifactKey: Guid(acafb24d948fbb9458fe4f612b7f8c01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Items/Potions/SmallPot.asset using Guid(acafb24d948fbb9458fe4f612b7f8c01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a65744f3215627d336207756bd6cd960') in 0.136983 seconds
-  Import took 0.144315 seconds .
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '862599c9eed4e8abf2d5cb663e638506') in 0.061693 seconds
+  Import took 0.065674 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.669065 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45e3c86d6a0e8be222861b9d5495ae85') in 0.009028 seconds
+  Import took 0.012661 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.752796 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f78ae4fcafa8e3f6c79c76b0efe8f086') in 0.008783 seconds
+  Import took 0.012620 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.917408 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cafae54c39704e5c150b33266138fd40') in 0.008816 seconds
+  Import took 0.012503 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 22.214312 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1aa1e6c3d541388d8f80d6c9045dc0fc') in 0.008283 seconds
+  Import took 0.012468 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.021753 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc50a48a621382909e4ef42c51234371') in 0.018405 seconds
+  Import took 0.023605 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.624352 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b4c3a3e4727e34fc2266421b47c79e4') in 0.007496 seconds
+  Import took 0.011652 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.832190 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7934a86686aa0a5a71fbdbb962aad8a3') in 0.006396 seconds
+  Import took 0.010073 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 34.633570 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9b95de462c683ba6bff900dfb664055') in 0.008829 seconds
+  Import took 0.012976 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 21.089818 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f7158c6567567e0950c1d251f794652') in 0.006766 seconds
+  Import took 0.011161 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.451030 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f90ff77897d5ae11e6a3f64ae1b817a6') in 0.006467 seconds
+  Import took 0.010464 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.016752 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86277b91bc797db7eeefc6efa98eb25c') in 0.007554 seconds
+  Import took 0.012034 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.225381 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '61b91bea5229e76c668c47de0691059d') in 0.008607 seconds
+  Import took 0.012573 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.893410 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75c595c946571797792a89baf5bd40f0') in 0.006064 seconds
+  Import took 0.009311 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.306825 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e12ccb96583f2cd8b0d7af1a7b6bfecd') in 0.008289 seconds
+  Import took 0.012291 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.085349 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e723557375ed3cac1ea08a02cc972a93') in 0.007917 seconds
+  Import took 0.011921 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.631983 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0220e1855c958ffd3fa75c56d9ac8b06') in 0.005886 seconds
+  Import took 0.009414 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.515852 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '993ed6c96ea21e855b30ce0d4c639eb2') in 0.008074 seconds
+  Import took 0.012417 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 16.384602 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb5edc472a3381d7c49059a06d57a4c7') in 0.005349 seconds
+  Import took 0.008614 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.046889 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c1fcc575542aee05ea24db36d419852d') in 0.021236 seconds
+  Import took 0.024888 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.183629 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eff29a65ad77bd13397e9f83647a94ca') in 0.006413 seconds
+  Import took 0.009822 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 37.499074 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3e9e688ed64717b9567bbf1d526ed6c') in 0.008393 seconds
+  Import took 0.012761 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.635643 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd6172b873db4446e540828deca3e0217') in 0.007293 seconds
+  Import took 0.011375 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.199336 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '958c9436f82a1e75dcfa42b2bfc0c3dc') in 0.006580 seconds
+  Import took 0.010634 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.583638 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f44c69a9c122be4d0ef9568c53deca81') in 0.006770 seconds
+  Import took 0.010524 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.243565 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce395968d4a23ec83077bc786b060201') in 0.006011 seconds
+  Import took 0.009746 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 55.307316 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '83620b84cd6c536e37fda2961daed713') in 0.007208 seconds
+  Import took 0.010739 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.415682 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cff5c69619e1df1b667ed5b09e283a71') in 0.007440 seconds
+  Import took 0.010962 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.277071 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a89a6e22058d83a9a43ea942727bf0bf') in 0.006741 seconds
+  Import took 0.010379 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.023767 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba02c82c2349136942f1096ef4b1a86e') in 0.006583 seconds
+  Import took 0.010282 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.834189 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd47f2d0a3ea8620a74be30f0290d4490') in 0.006476 seconds
+  Import took 0.013391 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 15.710816 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3305511bd587a97a74645209b6bb9595') in 0.007579 seconds
+  Import took 0.011785 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.180453 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85ff3399b40492fa778481bda092b9ec') in 0.007543 seconds
+  Import took 0.012264 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.466829 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4bdd3b9a70130c774060611542b41e32') in 0.006449 seconds
+  Import took 0.010303 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.529189 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '71bbd7c0febfacfecf9e599eb8ad6128') in 0.007322 seconds
+  Import took 0.011802 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.834041 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '754d64f167ab79d94aee3f2219b5ca89') in 0.006638 seconds
+  Import took 0.010288 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.425839 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '950ac8a12eeee6f8a0c35a64f2209719') in 0.008492 seconds
+  Import took 0.013026 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.665477 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9bdf2c1a0fa188260d52d03f3b159e07') in 0.007651 seconds
+  Import took 0.011286 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.813478 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0ff45e337cf4b752265a303a08c2e2b1') in 0.006397 seconds
+  Import took 0.009732 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.248834 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'decc8f38e350980438fbe1da0460db2e') in 0.006872 seconds
+  Import took 0.010846 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 126.029602 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ee3d865ab8669ef2c90f86a9ffcda7d') in 0.007505 seconds
+  Import took 0.011582 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.446536 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '734cffa28192cd8ee1cf1b0783c83dbd') in 0.008012 seconds
+  Import took 0.011818 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.477379 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b5e5abf3d25ddc41db5623befcd7cc5') in 0.007195 seconds
+  Import took 0.010734 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.865167 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00bbbe58151b7063ffecec066486cff2') in 0.007070 seconds
+  Import took 0.010774 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 14.997878 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b686f6cee3215ed5c6de15dba83d58d7') in 0.007074 seconds
+  Import took 0.011087 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.046175 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a23a55b2703019e6e25bc1d765a5c346') in 0.007258 seconds
+  Import took 0.012104 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.528870 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d7811f0d29a78bc3cec11c435b385d6') in 0.006281 seconds
+  Import took 0.009566 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.912574 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3420168109b41f22c93aa6e161411ebc') in 0.006359 seconds
+  Import took 0.009925 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.076799 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9921a7722d604d267683a68af215a11') in 0.006768 seconds
+  Import took 0.010849 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.123765 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58a4d8c2dde4697852b8173022d5b6a6') in 0.007512 seconds
+  Import took 0.011139 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.900350 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d441aa36179b5cbb3c2daff951d344f') in 0.006678 seconds
+  Import took 0.010807 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.275503 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb949e5091256e5a0e036630715bf4c5') in 0.008361 seconds
+  Import took 0.011951 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.835210 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ddc9f5ee8325b8ec314bca09416131a') in 0.008191 seconds
+  Import took 0.012151 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.027366 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97b80c0a8c6902244cbab7c22627555d') in 0.006541 seconds
+  Import took 0.011003 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.833477 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5d124d528bc467707eccdc09eaf1400') in 0.008666 seconds
+  Import took 0.012341 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.420415 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2802262033b0faf1c13ed88a074afaf') in 0.007079 seconds
+  Import took 0.010695 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.206868 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f5dfdab69a9e108554f0e88d4d324df') in 0.007566 seconds
+  Import took 0.011493 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.816977 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ab0c3bce63b686021b586ac1b24e101') in 0.008201 seconds
+  Import took 0.012957 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.992168 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '644180f1bd0441f6b0c4fab5466eb8d0') in 0.006493 seconds
+  Import took 0.010292 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.755193 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '915052381705cef405b9b5dc35bd3169') in 0.009027 seconds
+  Import took 0.013225 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 38.377988 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90ce624d5c5ac00708e37082967a6644') in 0.007484 seconds
+  Import took 0.011486 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.833107 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '88a1a4cada047cbae755ede0422652b5') in 0.007291 seconds
+  Import took 0.011739 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.621791 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36538bd1df146821cf987322ab1818de') in 0.007168 seconds
+  Import took 0.011136 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.031170 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '65c517a0122e1eca6d7c0b3e7107386f') in 0.006513 seconds
+  Import took 0.010283 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.887336 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6203b1f77b5bb70c4edfdc07e02f1894') in 0.007877 seconds
+  Import took 0.011515 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.990228 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7746ba44d53f5d3ab6b1c37268e4f406') in 0.007442 seconds
+  Import took 0.011034 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.772268 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c8bc06c577a0ff07ce708cfc5955217') in 0.005600 seconds
+  Import took 0.008936 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.974394 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bff3ed7c33dd57f44e2602ae14c8fbad') in 0.006064 seconds
+  Import took 0.009409 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.083985 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75db14563d8ca99ec1464cf85d93d0f8') in 0.009284 seconds
+  Import took 0.013047 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 14.334694 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b2631716da7f0b67ea0558b08215804') in 0.007329 seconds
+  Import took 0.011443 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.737364 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b915cbc2b21f191b31295761aebdea3') in 0.007968 seconds
+  Import took 0.011612 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.440675 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4cec7a3d2b26177785c87a6e57e219bd') in 0.008506 seconds
+  Import took 0.011976 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.816288 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0610cfcd85616ba0d1c3ddf8afd86323') in 0.008404 seconds
+  Import took 0.012461 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.229586 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd64fc364aceed549a174961ddc1c7462') in 0.008145 seconds
+  Import took 0.012811 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 15.530379 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f589aecd1d2e93234fea2fd7aa593a11') in 0.007053 seconds
+  Import took 0.011032 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.098622 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50aa7e570821b9f1d12088987e7cf338') in 0.005746 seconds
+  Import took 0.009607 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.792113 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5524408c14452851a1c2430f5479c865') in 0.007896 seconds
+  Import took 0.011733 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.584952 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec8886af245c8d35f8ce703ec1d4b04d') in 0.007944 seconds
+  Import took 0.011687 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.273256 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38604563e5d023e9cd80ec9b2b65f330') in 0.006077 seconds
+  Import took 0.009359 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.980659 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9207a0fb8ebdb53759b34c9199180a23') in 0.010335 seconds
+  Import took 0.015302 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.888481 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d66286d98f4341d687e36880af0e4f8') in 0.008853 seconds
+  Import took 0.012716 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.305651 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38fa9fe92afb8877754836d4d4638655') in 0.006920 seconds
+  Import took 0.012718 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.485538 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9dc5e10e7a7a8ab805ff95764bd523c1') in 0.008029 seconds
+  Import took 0.011424 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 11.985012 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d506359e51ad0e9b25f7110710804de') in 0.009044 seconds
+  Import took 0.012822 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.914597 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2193d84df17b58c80354414dde313d63') in 0.007417 seconds
+  Import took 0.011265 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.410430 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a84d938cdee3bef849cb934f6ae1670c') in 0.007466 seconds
+  Import took 0.011562 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 15.433843 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e02b08eea06c9ffe770d5465e025722') in 0.006460 seconds
+  Import took 0.010466 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.018126 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8fd769ba0373f0ec68d777cb376fd5bb') in 0.007204 seconds
+  Import took 0.011813 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.553361 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f4c24bb34ffab1eb8b9648837a6c8fe') in 0.007395 seconds
+  Import took 0.010962 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.083076 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '195a20d1cad014accca6a5b9fde4a875') in 0.007817 seconds
+  Import took 0.012012 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.042490 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03cb2a7fac0d98c725553fca118a6246') in 0.008996 seconds
+  Import took 0.013507 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 17.111009 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0096d9db16f725ea4589729cd5cfe6d2') in 0.008198 seconds
+  Import took 0.012338 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.835624 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9bcc059f64fca1d819fb847c66c776e') in 0.008010 seconds
+  Import took 0.012087 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.443178 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45429b3b3e2f7e034c9f70ef5b1ea698') in 0.007356 seconds
+  Import took 0.011008 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.055518 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e177cb3d3803f6e83107aace8de16bc5') in 0.007187 seconds
+  Import took 0.010672 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.396196 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c5dcda14e466aeba68452ce0a8767c5') in 0.006835 seconds
+  Import took 0.010577 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 50.919542 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dbc02f3550f5a7edf29485e7d29a588a') in 0.006964 seconds
+  Import took 0.010926 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.965581 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1cddeb9d5b1de2b8cf0b797a88ccb329') in 0.007775 seconds
+  Import took 0.012267 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.639410 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2c5d8b8d51d5601e28b5a0817b7e940') in 0.008031 seconds
+  Import took 0.013462 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.432222 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ce918703e60fb876a114b374d0de9d7') in 0.009783 seconds
+  Import took 0.013423 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.997732 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6734fbd5111ecbdf94d0749d87694909') in 0.006792 seconds
+  Import took 0.010544 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.889881 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b0a52ee68b747f90a971e65dc9603ddd') in 0.008186 seconds
+  Import took 0.012172 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.193932 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '822cbf8c8310bda9ff45b2380e122b56') in 0.007460 seconds
+  Import took 0.011193 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.920243 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7fe4df94224cc9cdef11ccee9bf0ed8') in 0.007911 seconds
+  Import took 0.011388 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 72.324188 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2860a950f54114ca22eee8f93845215d') in 0.013547 seconds
+  Import took 0.017612 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.210083 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b0b377cb369f69a95fb24edca23a18d') in 0.006623 seconds
+  Import took 0.010375 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.535838 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dbda493c83d3be155c20369f9ea4644a') in 0.007835 seconds
+  Import took 0.011431 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.087111 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc7e1535ee89c19f76ff9c58d826206b') in 0.007247 seconds
+  Import took 0.011164 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.892326 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2229b14331d7a0926d74357ea1f479b5') in 0.008277 seconds
+  Import took 0.013116 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001160 seconds.
+Registered in 0.000876 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.41 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.570 seconds
+- Completed reload, in  0.885 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.41 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1680 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 78.0 MB.
-System memory in use after: 78.1 MB.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 78.2 MB.
+System memory in use after: 78.3 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2135.
-Total: 3.812600 ms (FindLiveObjects: 0.356400 ms CreateObjectMapping: 0.061900 ms MarkObjects: 3.246000 ms  DeleteObjects: 0.145700 ms)
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 2139.
+Total: 3.133400 ms (FindLiveObjects: 0.451600 ms CreateObjectMapping: 0.106400 ms MarkObjects: 2.490100 ms  DeleteObjects: 0.083100 ms)
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001210 seconds.
+Registered in 0.001742 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.40 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.496 seconds
+- Completed reload, in  0.905 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.74 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.41 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1680 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 78.1 MB.
-System memory in use after: 78.2 MB.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 78.2 MB.
+System memory in use after: 78.3 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2138.
-Total: 4.699200 ms (FindLiveObjects: 0.339700 ms CreateObjectMapping: 0.104100 ms MarkObjects: 4.145500 ms  DeleteObjects: 0.107400 ms)
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2142.
+Total: 3.024500 ms (FindLiveObjects: 0.770800 ms CreateObjectMapping: 0.143700 ms MarkObjects: 2.035700 ms  DeleteObjects: 0.072100 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 338.922916 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '060d133a53e2709502bf124740f8ba52') in 0.040371 seconds
+  Import took 0.043899 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001130 seconds.
+Registered in 0.001182 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.74 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.41 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.439 seconds
+- Completed reload, in  0.863 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.51 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.42 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1680 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 78.1 MB.
-System memory in use after: 78.2 MB.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 78.3 MB.
+System memory in use after: 78.3 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2141.
-Total: 3.069600 ms (FindLiveObjects: 0.269500 ms CreateObjectMapping: 0.062000 ms MarkObjects: 2.654400 ms  DeleteObjects: 0.081500 ms)
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 2145.
+Total: 3.337200 ms (FindLiveObjects: 0.827200 ms CreateObjectMapping: 0.144300 ms MarkObjects: 2.282900 ms  DeleteObjects: 0.080400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 15.922383 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7fbc504675ecf3f514411d46959b4ae5') in 0.041194 seconds
+  Import took 0.044962 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.278180 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad977ee43bcdffb13923c829de9b1daa') in 0.009417 seconds
+  Import took 0.013382 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.881002 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c61c866527bce8b7c21d1a92e8b6c936') in 0.006586 seconds
+  Import took 0.010388 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.253336 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6413cf53a804c675a9c038ce73af340e') in 0.007190 seconds
+  Import took 0.011335 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.043330 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f27db5495a8614741a22c75246b569cb') in 0.007970 seconds
+  Import took 0.012501 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 18.403387 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '495018e292cb8772f65df75d54198eec') in 0.008757 seconds
+  Import took 0.013157 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.615670 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '135be921f524b3613cad98d817d80a4b') in 0.007230 seconds
+  Import took 0.011697 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.592443 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c660048cb961629ba5414407577cc9c5') in 0.007275 seconds
+  Import took 0.010877 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.359503 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f058b25ac7da02e3d63c75886c51ec9d') in 0.006800 seconds
+  Import took 0.010591 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.163861 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5587eaa1d7bbb80bd3ad10291e207454') in 0.008585 seconds
+  Import took 0.013945 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001731 seconds.
+Registered in 0.000967 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.66 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.40 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.554 seconds
+- Completed reload, in  0.851 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.50 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.42 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1680 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 78.1 MB.
-System memory in use after: 78.2 MB.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 78.3 MB.
+System memory in use after: 78.4 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2144.
-Total: 3.698400 ms (FindLiveObjects: 0.960800 ms CreateObjectMapping: 0.092200 ms MarkObjects: 2.562200 ms  DeleteObjects: 0.079400 ms)
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 2148.
+Total: 2.573800 ms (FindLiveObjects: 0.301700 ms CreateObjectMapping: 0.041600 ms MarkObjects: 2.145800 ms  DeleteObjects: 0.082500 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 112.484775 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56d7805d0ba6c2ae2ee1f186571fcc9c') in 0.039257 seconds
+  Import took 0.042489 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.802784 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f896f6587fde9ba77338ef1592164ccc') in 0.006500 seconds
+  Import took 0.010519 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.609872 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a8f4ac15008e93d00c98c63d6064609') in 0.005756 seconds
+  Import took 0.009279 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.194320 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21fb7b52e9c18fb47b6d919a573c7c10') in 0.007728 seconds
+  Import took 0.011682 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.309411 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd7a41ee4202473bf5f234d0eb10decc6') in 0.008584 seconds
+  Import took 0.012410 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.038936 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '15ac465c8a470a11aaf457da42571072') in 0.007816 seconds
+  Import took 0.011959 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.184692 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '660251daa9d40299d12c83eb72f61120') in 0.007682 seconds
+  Import took 0.011401 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.856159 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '328b7ac4250f9b1ca0f35966b0f077e8') in 0.008892 seconds
+  Import took 0.012846 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.007427 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '05eafe555c9bd055054cb01b71681b75') in 0.006772 seconds
+  Import took 0.012111 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.861873 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf04fbc6a27145fdd74ffc2b6ee5fc6c') in 0.007981 seconds
+  Import took 0.012169 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.432575 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c821bc6750ed34d5d60eadd80c0a377c') in 0.021811 seconds
+  Import took 0.025619 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001256 seconds.
+Registered in 0.000903 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.71 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.43 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.536 seconds
+- Completed reload, in  0.845 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 2.57 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.42 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1680 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 78.1 MB.
-System memory in use after: 78.2 MB.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 78.3 MB.
+System memory in use after: 78.4 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2147.
-Total: 7.327800 ms (FindLiveObjects: 0.834900 ms CreateObjectMapping: 0.355700 ms MarkObjects: 6.020500 ms  DeleteObjects: 0.113000 ms)
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 2151.
+Total: 4.413900 ms (FindLiveObjects: 0.730000 ms CreateObjectMapping: 0.181700 ms MarkObjects: 3.393900 ms  DeleteObjects: 0.105500 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 85.551036 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5fd0d27de6bbf0befab0f26a50013192') in 0.041043 seconds
+  Import took 0.044899 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001223 seconds.
+Registered in 0.001047 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.63 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.41 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.716 seconds
+- Completed reload, in  0.834 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.71 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.45 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1680 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 78.1 MB.
-System memory in use after: 78.2 MB.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 78.3 MB.
+System memory in use after: 78.4 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2150.
-Total: 4.242000 ms (FindLiveObjects: 0.368800 ms CreateObjectMapping: 0.102900 ms MarkObjects: 3.657300 ms  DeleteObjects: 0.110800 ms)
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 2154.
+Total: 2.588600 ms (FindLiveObjects: 0.422000 ms CreateObjectMapping: 0.088500 ms MarkObjects: 1.993400 ms  DeleteObjects: 0.082700 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 219.114794 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d3dd51a80a5c3243540639b9eb0999a') in 0.040182 seconds
+  Import took 0.043571 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 262.743355 seconds.
+  path: Assets/Items/InventorySlot.prefab
+  artifactKey: Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Items/InventorySlot.prefab using Guid(4cd444fc7fa44a74f87eddc6198cb44e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84502b2784e8f45f1e30194c8a0556c8') in 0.007132 seconds
+  Import took 0.010793 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.001161 seconds.
+Registered in 0.000896 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.51 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.40 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.429 seconds
+- Completed reload, in  0.908 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.65 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.41 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1680 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 78.1 MB.
-System memory in use after: 78.2 MB.
+Unloading 1682 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 78.3 MB.
+System memory in use after: 78.4 MB.
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2153.
-Total: 3.616000 ms (FindLiveObjects: 0.345700 ms CreateObjectMapping: 0.571700 ms MarkObjects: 2.614200 ms  DeleteObjects: 0.083100 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001236 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.479 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.72 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1680 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 78.1 MB.
-System memory in use after: 78.2 MB.
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2156.
-Total: 4.647900 ms (FindLiveObjects: 0.345100 ms CreateObjectMapping: 0.102200 ms MarkObjects: 4.078400 ms  DeleteObjects: 0.119300 ms)
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001610 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.654 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1680 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 78.1 MB.
-System memory in use after: 78.2 MB.
-
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2159.
-Total: 4.186100 ms (FindLiveObjects: 0.763400 ms CreateObjectMapping: 0.132200 ms MarkObjects: 3.205200 ms  DeleteObjects: 0.082900 ms)
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 2157.
+Total: 2.938300 ms (FindLiveObjects: 0.261400 ms CreateObjectMapping: 0.041700 ms MarkObjects: 2.556900 ms  DeleteObjects: 0.077000 ms)
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

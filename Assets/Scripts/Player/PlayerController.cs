@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
     }
     
     private void OnUseItem(InputAction.CallbackContext context) {
-        PlayerInventory.instance.QuickUse(_quickUseSlot);
+        if (!PlayerInventory.instance.Paused) PlayerInventory.instance.QuickUse(_quickUseSlot);
     }
 
     private void OnDeath() {
@@ -197,7 +197,7 @@ public class PlayerController : MonoBehaviour
         UpdateEquipmentStats();
     }
 
-    public void SwitchItem(Item item = null) { _quickUseSlot = item; }
+    public void SwitchItem(Item item = null) { _quickUseSlot = item; Debug.Log("Quick item = " + item);}
 
     public void ClearItem () { _quickUseSlot = null; }
 
