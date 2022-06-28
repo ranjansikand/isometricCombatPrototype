@@ -8,7 +8,7 @@ public class SimpleEnemy : MonoBehaviour, IDamageable {
     private Animator _animator;
     private NavMeshAgent _agent;
 
-    public List<Transform> _potentialTargets = new List<Transform>();
+    GameObject[] _potentialTargets;
     public static WaitForSeconds _delay = new WaitForSeconds(0.5f);
 
     bool _dead = false;
@@ -22,6 +22,10 @@ public class SimpleEnemy : MonoBehaviour, IDamageable {
     [SerializeField] private int _health;
     [SerializeField] private float _attackRange;
     [SerializeField] private float _sightRange;
+    [SerializeField] EnemyHPBar _hpBar;
+
+    public bool Attacking { get { return _animator.GetBool(_attackHash); }}
+    public bool Dead { get { return _dead; }}
 
     private void Awake() {
         _animator = GetComponent<Animator>();
@@ -31,21 +35,26 @@ public class SimpleEnemy : MonoBehaviour, IDamageable {
         _hurtHash = Animator.StringToHash("Hurt");
         _deathHash = Animator.StringToHash("Dead");
 
-        _target = _potentialTargets[Random.Range(0, _potentialTargets.Count)];
+        _potentialTargets = GameObject.FindGameObjectsWithTag("Target");
+        _target = _potentialTargets[Random.Range(0, _potentialTargets.Length)].transform;
         StartCoroutine(TargetNotFound());
+
+        _hpBar?.InitializeBar(_health);
     } 
 
     public void Damage(int amount) {
         if (!_dead && _health >= 0) {
             _health -= amount;
             
+            _hpBar?.UpdateBar(_health);
+
             if (_health <= 0) {
-                Dead();
+                Die();
             }
         }
     }
 
-    void Dead() {
+    void Die() {
         _dead = true;
         _agent.enabled = false;
 
@@ -85,7 +94,7 @@ public class SimpleEnemy : MonoBehaviour, IDamageable {
     }
 
     void Update() {
-        if (!_dead && _targetInRange) {
+        if (!_dead && _targetInRange && !_animator.GetBool(_attackHash)) {
             Vector3 direction = (_target.position - transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
             transform.rotation = lookRotation;

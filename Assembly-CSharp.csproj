@@ -76,6 +76,7 @@
      <Compile Include="Assets\Scripts\Inventory\Rotation.cs" />
      <Compile Include="Assets\Scripts\Inventory\Items\PotionsScaled.cs" />
      <Compile Include="Assets\Scripts\Player\States\PlayerStateFactory.cs" />
+     <Compile Include="Assets\Scripts\Combat\SimpleWeapon.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyAttack1State.cs" />
      <Compile Include="Assets\Scripts\UI\ItemPopup.cs" />
      <Compile Include="Assets\Scripts\UI\KeyCount.cs" />
@@ -92,6 +93,7 @@
      <Compile Include="Assets\Scripts\Inventory\Items\Talismans.cs" />
      <Compile Include="Assets\Scripts\Enemy\Behavior\EnemyData.cs" />
      <Compile Include="Assets\Scripts\Combat\EnemyWeapon.cs" />
+     <Compile Include="Assets\Scripts\Enemy\EnemyHPBar.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.1f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

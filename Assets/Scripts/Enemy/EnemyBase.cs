@@ -99,7 +99,7 @@ public class EnemyBase : MonoBehaviour, IDamageable
         _walkHash = Animator.StringToHash("walk");
         _hurtHash = Animator.StringToHash("Hurt");
         _idleHash = Animator.StringToHash("Idle");
-        _deathHash = Animator.StringToHash("Death");
+        _deathHash = Animator.StringToHash("Dead");
 
         // set modules
         _patrol = _data.GeneratePatrolAction(this);
