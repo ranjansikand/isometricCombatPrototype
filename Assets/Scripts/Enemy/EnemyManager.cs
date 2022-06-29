@@ -13,29 +13,40 @@ public class EnemyManager : MonoBehaviour
 
     List<EnemyBase> _enemies = new List<EnemyBase>();
 
-    WaitForSeconds _delay = new WaitForSeconds(1.5f);
+    [SerializeField] List<Transform> _targetPoints;
+
 
     void Awake() {
         instance = this;
         StartCoroutine(ManageCombat());
+
+        if (_targetPoints.Count == 0) {
+            GameObject[] temp =  GameObject.FindGameObjectsWithTag("Target");
+            for (int i = 0; i < temp.Length; i++) {
+                _targetPoints.Add(temp[i].transform);
+            }
+        }
+    }
+
+    public Transform GetPoint() {
+        Transform buffer = _targetPoints[0];
+        _targetPoints.RemoveAt(0);
+        _targetPoints.Add(buffer);
+        return buffer;
     }
 
     IEnumerator ManageCombat() {
         while (true) {
-            if (_enemiesInCombat != 0) {
-                EnemyBase selectedEnemy = _enemies[Random.Range(0, _enemies.Count)];
-                // Try to pick an enemy that isn't moving
-                for (int i = 0; i < _enemiesInCombat; i++) {
-                    selectedEnemy = _enemies[Random.Range(0, _enemies.Count)];
-                    if (!selectedEnemy.Agent.hasPath) break;
-                }
-                
-                selectedEnemy.LaunchAttack();
+            if (_enemiesInCombat > 0) {
+                EnemyBase enemy = _enemies[0];
+                _enemies.RemoveAt(0);
+                _enemies.Add(enemy);
+                enemy.LaunchAttack();
             }
 
             // Decrease time between attacks with larger groups of enemies
             yield return new WaitForSeconds(
-                Random.Range(0.5f, 3f)*
+                Random.Range(0.5f, 3f) *
                 Mathf.Max(0.1f, (25-(1.0f*_enemiesInCombat)) / 25)
             );
         }

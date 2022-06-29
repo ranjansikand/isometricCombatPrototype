@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(Animator), typeof(NavMeshAgent))]
+[RequireComponent(typeof(Animator), typeof(NavMeshAgent))]  // Motion
+[RequireComponent(typeof(Rigidbody), typeof(Collider))]  // Hit Damage
 public class SimpleEnemy : MonoBehaviour, IDamageable {
     private Animator _animator;
     private NavMeshAgent _agent;
 
-    GameObject[] _potentialTargets;
     public static WaitForSeconds _delay = new WaitForSeconds(0.5f);
 
     bool _dead = false;
@@ -22,12 +22,13 @@ public class SimpleEnemy : MonoBehaviour, IDamageable {
     [SerializeField] private int _health;
     [SerializeField] private float _attackRange;
     [SerializeField] private float _sightRange;
+    [SerializeField] private float _turnSpeed = 0.5f;
     [SerializeField] EnemyHPBar _hpBar;
 
     public bool Attacking { get { return _animator.GetBool(_attackHash); }}
     public bool Dead { get { return _dead; }}
 
-    private void Awake() {
+    private void Start() {
         _animator = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
 
@@ -35,11 +36,11 @@ public class SimpleEnemy : MonoBehaviour, IDamageable {
         _hurtHash = Animator.StringToHash("Hurt");
         _deathHash = Animator.StringToHash("Dead");
 
-        _potentialTargets = GameObject.FindGameObjectsWithTag("Target");
-        _target = _potentialTargets[Random.Range(0, _potentialTargets.Length)].transform;
+        _target = EnemyManager.instance.GetPoint();
         StartCoroutine(TargetNotFound());
 
         _hpBar?.InitializeBar(_health);
+        _hpBar?.gameObject.SetActive(false);
     } 
 
     public void Damage(int amount) {
@@ -47,6 +48,7 @@ public class SimpleEnemy : MonoBehaviour, IDamageable {
             _health -= amount;
             
             _hpBar?.UpdateBar(_health);
+            _animator.SetTrigger(_hurtHash);
 
             if (_health <= 0) {
                 Die();
@@ -69,6 +71,7 @@ public class SimpleEnemy : MonoBehaviour, IDamageable {
     }
 
     IEnumerator TargetNotFound() {
+        _animator.SetBool("Idle", true);
         while (!_targetInRange) {
             if ((_target.position - transform.position).sqrMagnitude < (_sightRange * _sightRange)) {
                 _targetInRange = true;
@@ -80,6 +83,8 @@ public class SimpleEnemy : MonoBehaviour, IDamageable {
 
     IEnumerator AttackingTarget() {
         StopCoroutine(TargetNotFound());
+        _hpBar?.gameObject.SetActive(true);
+        _animator.SetBool("Idle", false);
 
         while (!_dead) {
             // Attack or move
@@ -94,10 +99,10 @@ public class SimpleEnemy : MonoBehaviour, IDamageable {
     }
 
     void Update() {
-        if (!_dead && _targetInRange && !_animator.GetBool(_attackHash)) {
-            Vector3 direction = (_target.position - transform.position).normalized;
-            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-            transform.rotation = lookRotation;
+        if (!_dead && _targetInRange) {
+            var targetRotation = Quaternion.LookRotation (_target.position - transform.position);
+            var str = Mathf.Min (_turnSpeed * Time.deltaTime, 1);
+            transform.rotation = Quaternion.Lerp (transform.rotation, targetRotation, str);
         }
     }
 }

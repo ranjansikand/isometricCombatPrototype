@@ -12,17 +12,19 @@ public class PlayerInventory : MonoBehaviour
     private PlayerInput _playerInput;
     private PlayerController _player;
     [SerializeField] private InventoryUI _inventoryUI;
+    [SerializeField] private WeaponMenu _weaponSlots;
+    [SerializeField] private QuickItems _quickItemMenu;
 
     public delegate void InventoryEvent (int value);
     public static InventoryEvent useSimplePotion;
     public static InventoryEvent useScalingPotion;
+    public static InventoryEvent updateGoldCount;
     
     private List<Item> _inventory = new List<Item>();
     private Weapons[] _weapons = new Weapons[2];
 
     private const int _max_inventory_size = 5;
 
-    private int _inventoryIndex = 0;
     private int _weaponIndex = 0;
     private int _gold = 0;
 
@@ -58,17 +60,33 @@ public class PlayerInventory : MonoBehaviour
 
     #region Input functions
     private void OnScrollLeft(InputAction.CallbackContext context) {
-        if (!Paused) AccessInventory(Mathf.Max(0, _inventoryIndex - 1));
+        if (!Paused && _inventory.Count > 1) {
+            int index = _inventory.Count - 1;
+            Item buffer = _inventory[index];
+
+            _inventory.RemoveAt(index);
+            _inventory.Insert(0, buffer);
+
+            _quickItemMenu.RedrawSlots(_inventory);
+        }
     }
 
     private void OnScrollRight(InputAction.CallbackContext context) {
-        if (!Paused) AccessInventory(Mathf.Min(_inventoryIndex + 1, _max_inventory_size));
+        if (!Paused && _inventory.Count > 1) {
+            Item buffer = _inventory[0];
+            _inventory.RemoveAt(0);
+            _inventory.Add(buffer);
+
+            _player.SwitchItem(_inventory[0]);
+            _quickItemMenu.RedrawSlots(_inventory);
+        }
     }
 
     private void OnSwitchWeapon(InputAction.CallbackContext context) {
         if (!Paused && _canSwitchWeapon && !_player.IsAttacking) {
             _weaponIndex = Mathf.Abs(_weaponIndex - 1);
             _player.SwitchWeapon(_weapons[_weaponIndex]);
+            _weaponSlots.SwitchItem();
             StartCoroutine(RecoverFromWeaponSwitch());
         }
     }
@@ -105,6 +123,7 @@ public class PlayerInventory : MonoBehaviour
     #region Setting Objects
     public void AddWeapon(Weapons newWeapon) {
         _weapons[_weaponIndex] = newWeapon;
+        _weaponSlots.ChangeEquipment(_weaponIndex, newWeapon);
     }
 
     public bool AddItem(Item item) {
@@ -112,12 +131,12 @@ public class PlayerInventory : MonoBehaviour
             _inventory.Add(item);
 
             if (_player.QuickUseSlot == null || 
-                    _player.QuickUseSlot != _inventory[_inventoryIndex]) 
+                    _player.QuickUseSlot != _inventory[0]) 
             {
-                _inventoryIndex = _inventory.IndexOf(item);
-                _player.SwitchItem(item);
+                _player.SwitchItem(_inventory[0]);
             }
 
+            _quickItemMenu.RedrawSlots(_inventory);
             Debug.Log("Successfully added " + item.ItemName + " to inventory.");
             return true;
         }
@@ -129,25 +148,22 @@ public class PlayerInventory : MonoBehaviour
 
     public void AddGold(int amount) {
         _gold += amount;
-        Debug.Log("Added " + amount + " gold (" + _gold + " total)");
+        updateGoldCount(_gold);
     }
     #endregion
 
     #region Getting Objects
-    private void AccessInventory(int indexToAccess) {
-        _inventoryIndex = indexToAccess % _inventory.Count;
-        _player.SwitchItem(_inventory[_inventoryIndex]);
-    }
+    // private void AccessInventory(int indexToAccess) {
+    //     if (_inventory.Count > 0) {
+    //         _inventoryIndex = indexToAccess % _inventory.Count;
+    //         Item buffer = _inventory[0];
+    //         _inventory.RemoveAt(0);
+    //         _inventory.Add(buffer);
 
-    private void GetNextItemIndex() {
-        if (_inventory.Count > 1) {
-            if (_inventory[_inventoryIndex+1] != null) {
-                _inventoryIndex+=1;
-            }
-        } else {
-            _inventoryIndex = 0;
-        }
-    }
+    //         _player.SwitchItem(_inventory[0]);
+    //         _quickItemMenu.RedrawSlots(_inventory);
+    //     }
+    // }
 
     public bool CanAfford(int amount) {
         return (_gold - amount) > 0;
@@ -161,22 +177,22 @@ public class PlayerInventory : MonoBehaviour
             if (item is Potions pot) {
                 useSimplePotion(pot._healAmount);
             }
-            else if (item is PotionsScaled potS) {
-                useScalingPotion(potS.healPercentage);
+            else if (item is PotionsScaled potScaled) {
+                useScalingPotion(potScaled.healPercentage);
             }
 
-            RemoveItem(item);
-            GetNextItemIndex();
-            if (_inventory.Count > 0) {
-                _player.SwitchItem(_inventory[_inventoryIndex]);
-            } else {
-                _player.ClearItem();
-            }
+            _inventory.RemoveAt(0);
+
+            if (_inventory.Count > 0) _player.SwitchItem(_inventory[0]); 
+            else _player.ClearItem();
+
+            _quickItemMenu.RedrawSlots(_inventory);
         }
     }
 
     public void RemoveItem (Item item) {
         _inventory.Remove(item);
+        _quickItemMenu.RedrawSlots(_inventory);
     }
 
     public void UseGold(int amount) {
@@ -198,10 +214,4 @@ public class PlayerInventory : MonoBehaviour
     }
 
     #endregion
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

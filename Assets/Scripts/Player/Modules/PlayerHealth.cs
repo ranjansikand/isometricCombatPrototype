@@ -30,7 +30,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         if (_dead || _recovering) return;
 
         ChangeHealth(-1 * damage);
-        CameraManager.GenerateImpulse();
+        if (damage >= 2) CameraManager.GenerateImpulse();
         PlayerController.instance.OnHurt();
 
         // check if player died

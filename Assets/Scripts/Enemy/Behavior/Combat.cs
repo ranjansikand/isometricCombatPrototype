@@ -6,12 +6,11 @@ using UnityEngine.AI;
 public class Combat
 {
     private EnemyBase _ctx;
-    private CombatAction _action;
-
     private Vector3 _targetPos;
-    private static int groundLayer = 1 << 3;
     private static WaitForSeconds _delay = new WaitForSeconds(0.5f);
     
+    // private CombatAction _action;
+    // private static int groundLayer = 1 << 3;
 
     public EnemyBase Ctx { get { return _ctx; }}
 
@@ -28,9 +27,9 @@ public class Combat
     // EnemyBase.Update() > EnemyCombatStates.UpdateState() > Combat.CombatUpdate
     public virtual void CombatUpdate() {
         // Point towards player
-        Vector3 direction = (Ctx.Target.position - Ctx.transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-        Ctx.transform.rotation = lookRotation;
+        var targetRotation = Quaternion.LookRotation (Ctx.Target.position - Ctx.transform.position);
+        var str = Mathf.Min (0.75f * Time.deltaTime, 1);
+        Ctx.transform.rotation = Quaternion.Lerp (Ctx.transform.rotation, targetRotation, str);
     }
 
     IEnumerator CheckPosition() {
@@ -40,7 +39,7 @@ public class Combat
             // Check if player is far enough away to reposition
             if  ( sqrMag > 1.5f * sqrRad) {
                     // Head to new generated position
-                    _targetPos = GeneratePosition();
+                    _targetPos = EnemyManager.instance.GetPoint().position;
                     Ctx.Agent.SetDestination(_targetPos);
             }
             // Go back to previous position after attacking
@@ -50,28 +49,5 @@ public class Combat
 
             yield return _delay;
         }
-    }
-
-    Vector3 GeneratePosition() {
-        // Assign point guaranteed to fail raycast
-        Vector3 checkPos = new Vector3(0,100,0);
-
-        // Try to choose new point up to 60 times
-        for (int i = 0; i < 60; i++) {
-            if (Physics.Raycast(checkPos, Vector3.down, 2f, groundLayer)) {
-                break;
-            }
-            else {
-                // Generate random direction x random magnitude
-                Vector2 temp = Random.insideUnitCircle.normalized * (Ctx.CircleRadius * Random.Range(0.8f, 1.2f));
-                // Center to player's position
-                checkPos = new Vector3(temp.x, 0, temp.y) + Ctx.Target.position;
-                // Set y to original y
-                checkPos.y = Ctx.transform.position.y;
-            }
-        }
-
-        if (Ctx.JustAttacked) Ctx.JustAttacked = false;
-        return checkPos;
     }
 }
