@@ -13,9 +13,4 @@ public abstract class PlayerBaseState
     public abstract void EnterState();
     public abstract void UpdateState();
     public abstract void ExitState();
-
-    public void SwitchState(EnemyBaseState newState) {
-        ExitState();
-        newState.EnterState();
-    }
 }

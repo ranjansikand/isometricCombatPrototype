@@ -1,19 +1,18 @@
-// Script for enemy weapons to damage player or other enemies
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyWeapon : Weapon
 {
-    EnemyBase _activeState;
+    EnemyStateMachine _context;
 
     void Awake() {
-        _activeState = topParent.GetComponent<EnemyBase>();
+        _context = GetComponentInParent<EnemyStateMachine>();
     }
-    
+
     public override void OnTriggerEnter(Collider other) {
-        if (_activeState.IsAttacking && other.gameObject != topParent) {
+        if (_context.IsAttacking) {
             base.OnTriggerEnter(other);
         }
     }
-      
 }
