@@ -18,6 +18,7 @@ public class PlayerInventory : MonoBehaviour
     public delegate void InventoryEvent (int value);
     public static InventoryEvent useSimplePotion;
     public static InventoryEvent useScalingPotion;
+    public static InventoryEvent useStatPotion;
     public static InventoryEvent updateGoldCount;
     
     private List<Item> _inventory = new List<Item>();
@@ -67,6 +68,7 @@ public class PlayerInventory : MonoBehaviour
             _inventory.RemoveAt(index);
             _inventory.Insert(0, buffer);
 
+            _player.SwitchItem(_inventory[0]);
             _quickItemMenu.RedrawSlots(_inventory);
         }
     }
@@ -179,6 +181,10 @@ public class PlayerInventory : MonoBehaviour
             }
             else if (item is PotionsScaled potScaled) {
                 useScalingPotion(potScaled.healPercentage);
+            }
+            else if (item is PotionsStats potStat) {
+                int potType = potStat.adjustedStat == PotionType.Strength ? 1:2;
+                useStatPotion((int)potStat.adjustedStat);
             }
 
             _inventory.RemoveAt(0);

@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     private Coroutine _comboResetRoutine = null;
     private int _attackNumber = 1;
     private WaitForSeconds _comboResetTimer = new WaitForSeconds(1.5f);
+    private WaitForSeconds _potionDuration = new WaitForSeconds(60);
 
     // Animations
     private int _standardIdleHash;
@@ -191,6 +192,28 @@ public class PlayerController : MonoBehaviour
         Destroy(_selection.gameObject);
     }
 
+    private void StartPotion(int i) {
+        StartCoroutine(PotionSkillEffect(i));
+    }
+
+    IEnumerator PotionSkillEffect(int type) {
+        float buffer = 1;
+        if (type == 1) {
+            buffer = .75f * _walkSpeed;
+            _walkSpeed += buffer;
+        }
+        if (type == 2) {
+            buffer = 10;
+            _baseDamage += (int)buffer;
+        }
+        
+
+        yield return _potionDuration;
+
+        if (type == 1) _walkSpeed -= buffer;
+        if (type == 2) _baseDamage -= (int)buffer;
+    }
+
     // Functions that interface with inventory
     public void SwitchWeapon(Weapons weapon) {
         _mainWeapon = weapon;
@@ -215,6 +238,8 @@ public class PlayerController : MonoBehaviour
             case (false): return false;
         }
     }
+
+
     #endregion
 
     #region Other functions
@@ -299,6 +324,7 @@ public class PlayerController : MonoBehaviour
         ActionState.onAnimationComplete += EndAction;
         PlayerHealth.onDeath += OnDeath;
         PlayerHealth.onDeath += OnDisable;
+        PlayerInventory.useStatPotion += StartPotion;
         _playerInput.Enable();
     }
 

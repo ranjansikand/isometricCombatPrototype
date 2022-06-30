@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Weapon", menuName = "Items/Weapon", order = 1)]
+[CreateAssetMenu(fileName = "Weapon", menuName = "Items/Weapon", order = 0)]
 public class Weapons : Item
 {
     public int _damage = 5;

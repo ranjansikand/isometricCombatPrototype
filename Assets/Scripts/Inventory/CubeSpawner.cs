@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class CubeSpawner : MonoBehaviour
 {
-    [SerializeField] Item weapon;
+    [SerializeField] int numberOfItems = 1;
 
     void Start() {
-        ItemGenerator.instance.SpawnObject(transform.position, weapon);
-        ItemGenerator.instance.SpawnGold(transform.position, 10);
+        for (int i = 0; i < numberOfItems; i++) {
+            ItemGenerator.instance.PopOutObject(transform.position);
+        }
     }
 }
